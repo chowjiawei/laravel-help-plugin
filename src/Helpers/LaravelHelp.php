@@ -293,7 +293,11 @@ class LaravelHelp{
     {
         return SELF::AllCOUNTRY;
     }
-
+    /**
+     * Get Country Name.
+     *
+     * @return  string
+     */
     public function getCountryName($countryCode) :string
     {
         if(isset(SELF::AllCOUNTRY[$countryCode]))
@@ -302,10 +306,15 @@ class LaravelHelp{
         }
     }
 
+    /**
+     * Get Country Code.
+     *
+     * @return  string
+     */
     public function getCountryCode($countryName)
     {
         if(array_search($countryName,SELF::AllCOUNTRY)!==false){
-            return SELF::AllCOUNTRY[array_search($countryName,SELF::AllCOUNTRY)];
+            return array_search($countryName,SELF::AllCOUNTRY);
         }
         return null;
     }
