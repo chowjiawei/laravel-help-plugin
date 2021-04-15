@@ -294,4 +294,20 @@ class LaravelHelp{
         return SELF::AllCOUNTRY;
     }
 
+    public function getCountryName($countryCode) :string
+    {
+        if(isset(SELF::AllCOUNTRY[$countryCode]))
+        {
+            return SELF::AllCOUNTRY[$countryCode];
+        }
+    }
+
+    public function getCountryCode($countryName)
+    {
+        if(array_search($countryName,SELF::AllCOUNTRY)!==false){
+            return SELF::AllCOUNTRY[array_search($countryName,SELF::AllCOUNTRY)];
+        }
+        return null;
+    }
+
 }
