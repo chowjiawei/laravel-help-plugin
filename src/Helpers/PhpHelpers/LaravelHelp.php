@@ -1,6 +1,6 @@
 <?php
 
-namespace Chowjiawei\Helpers\Helpers;
+namespace Chowjiawei\Helpers\PhpHelps;
 
 
 class LaravelHelp{
