@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "zhoujiawei\\help\\plugin\\": "src/"
+            "chowjiawei\\help\\plugin\\": "src/"
         }
     }
 }
