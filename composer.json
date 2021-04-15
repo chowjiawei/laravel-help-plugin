@@ -1,0 +1,22 @@
+{
+    "name": "ZHOU-JIA-WEI/laravel-help-plugin",
+    "type": "library",
+    "description": "Integrating useful auxiliary functions into laravel",
+    "keywords": ["laravel", "plugin"],
+    "homepage": "https://github.com/ZHOU-JIA-WEI/laravel-help-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ZHOU-JIA-WEI",
+            "homepage": "https://github.com/"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "zhoujiawei\\help\\plugin\\": "src/"
+        }
+    }
+}
