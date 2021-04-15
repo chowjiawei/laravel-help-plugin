@@ -1,13 +1,13 @@
 {
-    "name": "zhoujiawei/laravel-help-plugin",
+    "name": "chowjiawei/laravel-help-plugin",
     "type": "library",
     "description": "Integrating useful auxiliary functions into laravel",
     "keywords": ["laravel", "plugin"],
-    "homepage": "https://github.com/ZHOU-JIA-WEI/laravel-help-plugin",
+    "homepage": "https://github.com/chowjiawei/laravel-help-plugin",
     "license": "MIT",
     "authors": [
         {
-            "name": "ZHOU-JIA-WEI",
+            "name": "chowjiawei",
             "homepage": "https://github.com/"
         }
     ],
