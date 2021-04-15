@@ -1,5 +1,5 @@
 {
-    "name": "ZHOU-JIA-WEI/laravel-help-plugin",
+    "name": "zhoujiawei/laravel-help-plugin",
     "type": "library",
     "description": "Integrating useful auxiliary functions into laravel",
     "keywords": ["laravel", "plugin"],
