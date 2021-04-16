@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'Country'=> [
+    'country'=> [
         "AO" => "Angola",
         "BF" => "Burkina Faso",
         "BI" => "Burundi",
