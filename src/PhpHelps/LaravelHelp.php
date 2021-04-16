@@ -319,4 +319,15 @@ class LaravelHelp{
         return null;
     }
 
+    /**
+     * Get All Exchange Code.
+     *
+     * @return  array
+     */
+    public function getAllExchangeCode() :array
+    {
+        return config('helpers.exchange_code');
+    }
+
+
 }
