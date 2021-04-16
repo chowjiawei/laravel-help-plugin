@@ -24,7 +24,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "laravel-help-plugin\\src\\Providers\\HelpPluginServiceProvider"
+                "Chowjiawei\\Helpers\\Providers\\HelpPluginServiceProvider"
             ]
         }
     }
