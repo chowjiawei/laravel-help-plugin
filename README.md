@@ -27,16 +27,71 @@ php artisan vendor:publish --provider="Chowjiawei\Helpers\Providers\HelpPluginSe
 ```
 
 
-目前支持 
+目前支持以下驱动，具体使用方式详见laravel中国文档 
+``
+https://learnku.com/docs/laravel/7.x/notifications/7489#specifying-delivery-channels
+``
+钉钉机器人消息发送驱动 
+```
+use Chowjiawei\Helpers\Channels\DingtalkRobotChannel;
 
-钉钉机器人消息发送驱动  
-
+public function via($notifiable)
+{
+    return [DingtalkRobotChannel::class];
+}
+```
 微信机器人消息发送驱动
+
+```
+use Chowjiawei\Helpers\Channels\WechatRobotChannel;
+
+public function via($notifiable)
+{
+    return [WechatRobotChannel::class];
+}
+```
 
 微信模板消息发送驱动
 
-获取全部国家代码及名字
+```
+use Chowjiawei\Helpers\Channels\WechatTemplateMessageChannel;
 
-根据国家代码或名字转化 
+public function via($notifiable)
+{
+    return [WechatTemplateMessageChannel::class];
+}
+```
+```
+Notification::route('dingtalk_robot', $key)->notify(new YourNotification());
+Notification::route('wechat_robot', $key)->notify(new YourNotification());
+Notification::route('WechatTemplateMessage', $key)->notify(new YourNotification());
+```
+### 获取全部国家代码及名字
 
-获取实时汇率
+```
+use Chowjiawei\Helpers\PhpHelps\LaravelHelp;
+$help=new LaravelHelp();
+
+获取所有国家
+$help->getAllCountry();
+
+根据国家代码转国家名字 
+$help->getCountryName('CN');
+根据国家名字转国家代码
+$help->getCountryName('China');
+```
+
+facade方式：
+```
+Helper::allCountry();
+```
+
+### 获取实时汇率
+
+```
+use Chowjiawei\Helpers\Exchange\Exchange;
+
+$help->getChangerates();
+```
+
+# 文档待完善
