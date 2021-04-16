@@ -251,5 +251,10 @@ return [
         "SR" => "Suriname",
         "UY" => "Uruguay",
         "VE" => "Venezuela",
+    ],
+    "exchange"=>[
+        "appid"=>env('EXCHANGE_APPID', null),
+        "base_currency"=>env('EXCHANGE_BASE_CURRENY', 'USD'),
+
     ]
 ];

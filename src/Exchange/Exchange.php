@@ -19,8 +19,10 @@ class Exchange extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getChangerates($appid, $baseCurrency='USD')
+    public function getChangerates()
     {
+        $appid=config('helpers.exchange.appid');
+        $baseCurrency=config('helpers.exchange.base_currency');
         $client = new Client([
             'timeout'  => 52.0,
         ]);
