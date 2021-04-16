@@ -20,5 +20,12 @@
         "psr-4": {
             "Chowjiawei\\Helpers\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "laravel-help-plugin\\src\\Providers\\HelpPluginServiceProvider"
+            ]
+        }
     }
 }
