@@ -1,17 +1,18 @@
-##chowjiawei/laravel-help-plugin
+## chowjiawei/laravel-help-plugin
+laravel辅助工具包
 
-###Integrating useful auxiliary functions into laravel
+### Integrating useful auxiliary functions into laravel
 
 ##下载方式：composer
 
 composer require chowjiawei/laravel-help-plugin
 
-##发布配置文件
+## 发布配置文件
 
 php artisan vendor:publish --provider="Chowjiawei\Helpers\Providers\HelpPluginServiceProvider"
 
 
-##注册facade
+## 注册facade
 
 打开config/app.php
 
