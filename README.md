@@ -209,7 +209,7 @@ public function via($notifiable)
 ```
 Notification::route('dingtalk_robot', $key)->notify(new YourNotification());
 Notification::route('wechat_robot', $key)->notify(new YourNotification());
-Notification::route('WechatTemplateMessage', $key)->notify(new YourNotification());
+Notification::route('Wechat_template_message', $key)->notify(new YourNotification());
 ```
 
 
