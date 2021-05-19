@@ -3,9 +3,10 @@
 namespace Chowjiawei\Helpers\PhpHelps;
 
 
-class LaravelHelp{
+class LaravelHelp
+{
 
-    CONST AllCOUNTRY= [
+    const AllCOUNTRY = [
         "AO" => "Angola",
         "BF" => "Burkina Faso",
         "BI" => "Burundi",
@@ -260,26 +261,26 @@ class LaravelHelp{
     /**
      * Get Two Number Count.
      *
-     * @param   string|integer  $num1
-     * @param   string|integer $num2
+     * @param string|integer $num1
+     * @param string|integer $num2
      * @return  integer
      */
     public function getCountNumber($num1, $num2)
     {
-        return $num1+$num2;
+        return $num1 + $num2;
     }
 
     /**
      * Get A Array Count.
      *
-     * @param   array  $array
+     * @param array $array
      * @return  integer
      */
     public function getArrayCount($array)
     {
-        $sum=0;
-        foreach ($array as $num){
-            $sum+=$num;
+        $sum = 0;
+        foreach ($array as $num) {
+            $sum += $num;
         }
         return $sum;
     }
@@ -293,15 +294,15 @@ class LaravelHelp{
     {
         return SELF::AllCOUNTRY;
     }
+
     /**
      * Get Country Name.
      *
      * @return  string
      */
-    public function getCountryName($countryCode) :string
+    public function getCountryName($countryCode): string
     {
-        if(isset(SELF::AllCOUNTRY[$countryCode]))
-        {
+        if (isset(SELF::AllCOUNTRY[$countryCode])) {
             return SELF::AllCOUNTRY[$countryCode];
         }
     }
@@ -313,8 +314,8 @@ class LaravelHelp{
      */
     public function getCountryCode($countryName)
     {
-        if(array_search($countryName,SELF::AllCOUNTRY)!==false){
-            return array_search($countryName,SELF::AllCOUNTRY);
+        if (array_search($countryName, SELF::AllCOUNTRY) !== false) {
+            return array_search($countryName, SELF::AllCOUNTRY);
         }
         return null;
     }
@@ -324,7 +325,7 @@ class LaravelHelp{
      *
      * @return  array
      */
-    public function getAllExchangeCode() :array
+    public function getAllExchangeCode(): array
     {
         return config('helpers.exchange_code');
     }

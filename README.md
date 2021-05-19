@@ -21,17 +21,22 @@ php artisan vendor:publish --provider="Chowjiawei\Helpers\Providers\HelpPluginSe
 ```
 \Chowjiawei\Helpers\Providers\HelpPluginServiceProvider::class,
 ```
+
 找到 'aliases'添加
+
 ```
 'Helper'=>\Chowjiawei\Helpers\Facade\Helper::class
 ```
 
 
 目前支持以下驱动，具体使用方式详见laravel中国文档 
+
 ``
 https://learnku.com/docs/laravel/7.x/notifications/7489#specifying-delivery-channels
 ``
-钉钉机器人消息发送驱动 
+
+#### 钉钉机器人消息发送驱动 
+
 ```
 use Chowjiawei\Helpers\Channels\DingtalkRobotChannel;
 
@@ -40,7 +45,7 @@ public function via($notifiable)
     return [DingtalkRobotChannel::class];
 }
 ```
-微信机器人消息发送驱动
+#### 微信机器人消息发送驱动
 
 ```
 use Chowjiawei\Helpers\Channels\WechatRobotChannel;
@@ -51,7 +56,7 @@ public function via($notifiable)
 }
 ```
 
-微信模板消息发送驱动
+#### 微信模板消息发送驱动
 
 ```
 use Chowjiawei\Helpers\Channels\WechatTemplateMessageChannel;
@@ -61,15 +66,19 @@ public function via($notifiable)
     return [WechatTemplateMessageChannel::class];
 }
 ```
+
 ```
 Notification::route('dingtalk_robot', $key)->notify(new YourNotification());
 Notification::route('wechat_robot', $key)->notify(new YourNotification());
 Notification::route('WechatTemplateMessage', $key)->notify(new YourNotification());
 ```
+
 ### 获取全部国家代码及名字
 
 ```
 use Chowjiawei\Helpers\PhpHelps\LaravelHelp;
+
+初始化辅助工具
 $help=new LaravelHelp();
 
 获取所有国家

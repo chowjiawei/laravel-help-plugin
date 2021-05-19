@@ -11,22 +11,22 @@ class WechatRobotChannel
     /**
      * Send the given notification.
      *
-     * @param  mixed  $notifiable
-     * @param  \Illuminate\Notifications\Notification  $notification
+     * @param mixed $notifiable
+     * @param \Illuminate\Notifications\Notification $notification
      * @return void
      */
     public function send($notifiable, Notification $notification)
     {
         $message = $notification->toWechatRobot($notifiable);
-        $key=$notifiable->routes['wechat_robot'];
-        $data=array("msgtype"=>"markdown", "markdown"=> [
-            "content"=> $message,
+        $key = $notifiable->routes['wechat_robot'];
+        $data = array("msgtype" => "markdown", "markdown" => [
+            "content" => $message,
         ]);
         $client = new Client();
-        $key=is_array($key)?$key:array($key);
+        $key = is_array($key) ? $key : array($key);
         foreach ($key as $keys) {
-            $url='https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key='.$keys;
-            $response = $client->post($url, [\GuzzleHttp\RequestOptions::JSON => $data ]);
+            $url = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=' . $keys;
+            $response = $client->post($url, [\GuzzleHttp\RequestOptions::JSON => $data]);
         }
     }
 }

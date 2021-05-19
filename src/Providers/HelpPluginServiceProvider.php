@@ -8,7 +8,7 @@ class HelpPluginServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->bind('Helper',function(){
+        $this->app->bind('Helper', function () {
             return new Helper();
         });
     }

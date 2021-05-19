@@ -23,31 +23,31 @@ class WechatTemplateMessageChannel
      *      $allData=[$data,$template];
      *      return $allData;
      *
-     * @param  mixed  $notifiable
-     * @param  \Illuminate\Notifications\Notification  $notification
+     * @param mixed $notifiable
+     * @param \Illuminate\Notifications\Notification $notification
      * @return void
      */
     public function send($notifiable, Notification $notification)
     {
         $app = app('wechat.official_account');
         $allData = $notification->toWechatTemplateMessage($notifiable);
-        $data=$allData[0];
-        $template=$allData[1];
-        $openId=isset($notifiable->routes['WechatTemplateMessage'])?$notifiable->routes['WechatTemplateMessage']:null;
-        $broad=false;
+        $data = $allData[0];
+        $template = $allData[1];
+        $openId = isset($notifiable->routes['WechatTemplateMessage']) ? $notifiable->routes['WechatTemplateMessage'] : null;
+        $broad = false;
         if (!$openId) {
-            $broad=true;
+            $broad = true;
         }
         if ($openId) {
-            $openId=is_array($openId)?$openId:array($openId);
+            $openId = is_array($openId) ? $openId : array($openId);
         }
-        if ($broad==false) {
+        if ($broad == false) {
             foreach ($openId as $keys) {
                 $app->template_message->send(
                     [
                         'touser' => $keys,
                         'template_id' => $template,
-                        "data"=>$data
+                        "data" => $data
                     ]
                 );
             }

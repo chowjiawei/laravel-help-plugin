@@ -2,13 +2,11 @@
 
 namespace Chowjiawei\Helpers\Exchange;
 
-use App\Http\Controllers\Controller;
-use http\Client\Response;
-use Illuminate\Http\Request;
 use Cache;
 use GuzzleHttp;
 use GuzzleHttp\Client;
-
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class Exchange extends Controller
 {
@@ -21,14 +19,14 @@ class Exchange extends Controller
      */
     public function getChangerates()
     {
-        $appid=config('helpers.exchange.appid');
-        $baseCurrency=config('helpers.exchange.base_currency');
+        $appid = config('helpers.exchange.appid');
+        $baseCurrency = config('helpers.exchange.base_currency');
         $client = new Client([
-            'timeout'  => 52.0,
+            'timeout' => 52.0,
         ]);
-        $url='https://openexchangerates.org/api/latest.json?app_id='.$appid.'&base='.$baseCurrency;
+        $url = 'https://openexchangerates.org/api/latest.json?app_id=' . $appid . '&base=' . $baseCurrency;
         $response = $client->request('GET', $url);
-        $value=json_decode($response->getBody()->getContents(), true);
+        $value = json_decode($response->getBody()->getContents(), true);
         return $value;
     }
 }
