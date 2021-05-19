@@ -212,6 +212,29 @@ Notification::route('wechat_robot', $key)->notify(new YourNotification());
 Notification::route('WechatTemplateMessage', $key)->notify(new YourNotification());
 ```
 
+
+### 直接使用消息驱动
+
+#### 钉钉:
+
+`use Chowjiawei\Helpers\Notifications\DingtalkRobotNotification;`
+
+`Notification::route('dingtalk_robot', env("DINGTALK_ROBOT"))
+     ->notify(new DingtalkRobotNotification($message,$title));`
+#### 企业微信:
+
+`use Chowjiawei\Helpers\Notifications\WechatRobotNotification;`
+
+`Notification::route('wechat_robot', env("WECHAT_ROBOT)"))
+->notify(new DingtalkRobotNotification($message));`
+
+#### 微信模板消息:
+
+`use Chowjiawei\Helpers\Notifications\WechatTemplateMessageNotification;`
+
+`Notification::route('Wechat_template_message', env("WECHAT_TEMPLATE)"))
+->notify(new DingtalkRobotNotification($message));`
+
 ### 获取全部国家代码及名字
 
 ```

@@ -33,7 +33,7 @@ class WechatTemplateMessageChannel
         $allData = $notification->toWechatTemplateMessage($notifiable);
         $data = $allData[0];
         $template = $allData[1];
-        $openId = isset($notifiable->routes['WechatTemplateMessage']) ? $notifiable->routes['WechatTemplateMessage'] : null;
+        $openId = isset($notifiable->routes['Wechat_template_message']) ? $notifiable->routes['Wechat_template_message'] : null;
         $broad = false;
         if (!$openId) {
             $broad = true;
