@@ -232,8 +232,49 @@ Notification::route('Wechat_template_message', $key)->notify(new YourNotificatio
 
 `use Chowjiawei\Helpers\Notifications\WechatTemplateMessageNotification;`
 
-`Notification::route('Wechat_template_message', env("WECHAT_TEMPLATE)"))
-->notify(new DingtalkRobotNotification($message));`
+- 不指定用户（广播用户）
+
+`Notification::route('WechatTemplateMessage', null)->notify(new WechatTemplateMessageNotification($data));` 
+
+- 指定用户
+
+```
+        $user=['odAYnxOVy7vS266666GFQ','odAYnxEuuTCf66666fov27cf4A'];
+
+        $template="iA2V1K45vS8IgUEvE666666EH3R-V-DdLWpzAw";
+
+        $data=[
+
+            "order_id"=>[
+
+                "value"=>"20200414234478934343",
+
+                "color"=>"#173177"
+
+            ],
+
+            "package_id"=>[
+
+                "value"=>"SF4345454534",
+
+                "color"=>"#173177"
+
+            ],
+
+            "remark"=>[
+
+                "value"=>'模板消息发送',
+
+                "color"=>"#173177"
+
+            ]
+
+        ];
+
+        Notification::route('WechatTemplateMessage', $user)->notify(new WechatTemplateMessageNotification($data, $template));
+
+``` 
+
 
 ### 获取全部国家代码及名字
 
