@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Notifications;
+namespace Chowjiawei\Helpers\Notifications;
 
 use Carbon\Carbon;
 use Chowjiawei\Helpers\Channels\DingtalkRobotChannel;
@@ -10,7 +10,6 @@ use Illuminate\Notifications\Notification;
 class DingtalkRobotNotification extends Notification
 {
     use Queueable;
-
     public function __construct($text, $title)
     {
         $this->text=$text;
