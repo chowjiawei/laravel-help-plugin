@@ -19,8 +19,8 @@ class DingtalkRobotChannel
         $message = $notification->toDingtalkRobot($notifiable);
         $key = $notifiable->routes['dingtalk_robot'];
         $data = array("msgtype" => "markdown", "markdown" => [
-            "title" => '店铺通知',
-            "text" => $message,
+            "title" => $message[1],
+            "text" => $message[2],
         ]);
         $client = new Client();
         $key = is_array($key) ? $key : array($key);
