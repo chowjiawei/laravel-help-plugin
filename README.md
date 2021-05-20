@@ -1,12 +1,19 @@
 # Laravel辅助工具包
 
-Integrating useful auxiliary functions into laravel
+
+ 支持钉钉机器人 企业微信机器人 微信模板消息/广播 Openexchangerates汇率实时获取
 
 - [安装说明](#composer)
 - [发布配置文件](#config)
 - [注册门面方法](#facade)
 - [消息驱动](#channel)
+     - [钉钉机器人](#dingtalk)
+     - [企业微信机器人](#wechat)
+     - [微信模板消息](#wechatTemp)
 - [直接消息推送](#usem)
+     - [钉钉机器人](#usedingtalk)
+     - [企业微信机器人](#usewechat)
+     - [微信模板消息](#usewechatTemp)
 - [国家获取转换](#country)
 - [Openexchangerates汇率实时获取](#openexchangerates)
 
@@ -191,12 +198,19 @@ Notification::route('Wechat_template_message', $key)->notify(new YourNotificatio
 <a name="usem"></a>
 # 直接消息推送
 
+- [钉钉机器人](#usedingtalk)
+- [企业微信机器人](#usewechat)
+- [微信模板消息](#usewechatTemp)
+
+<a name="usedingtalk"></a>
 ### 钉钉:
 
 `use Chowjiawei\Helpers\Notifications\DingtalkRobotNotification;`
 
 `Notification::route('dingtalk_robot', env("DINGTALK_ROBOT"))
      ->notify(new DingtalkRobotNotification($message,$title));`
+
+<a name="usewechat"></a>
 ### 企业微信:
 
 `use Chowjiawei\Helpers\Notifications\WechatRobotNotification;`
@@ -204,6 +218,7 @@ Notification::route('Wechat_template_message', $key)->notify(new YourNotificatio
 `Notification::route('wechat_robot', env("WECHAT_ROBOT)"))
 ->notify(new DingtalkRobotNotification($message));`
 
+<a name="usewechatTemp"></a>
 ### 微信模板消息:
 
 
