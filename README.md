@@ -238,9 +238,9 @@ Notification::route('Wechat_template_message', $key)->notify(new YourNotificatio
 - 指定用户
 
 ```
-        $user=['odAYnxOVy7vS266666GFQ','odAYnxEuuTCf66666fov27cf4A'];
+        $user=['odAYnxOVy7vS266666666','odAYnxEuuTCf66666fov276666'];
 
-        $template="iA2V1K45vS8IgUEvE666666EH3R-V-DdLWpzAw";
+        $template="iA2V1K45vS8IgUEvE666666EH3R-V-66666";
 
         $data=[
 
