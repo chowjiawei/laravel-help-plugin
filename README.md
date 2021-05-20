@@ -1,7 +1,13 @@
 # Laravel辅助工具包
 
+<p align="center">
+    <a href="https://packagist.org/packages/chowjiawei/laravel-help-plugin" ><img src="https://poser.pugx.org/chowjiawei/laravel-help-plugin/v/stable" /></a> 
+    <a href="https://packagist.org/packages/chowjiawei/laravel-help-plugin"><img src="https://img.shields.io/packagist/dt/chowjiawei/laravel-help-plugin.svg?color=" /></a> 
+    <a><img src="https://img.shields.io/badge/php-7.0+-59a9f8.svg?style=flat" /></a> 
+    <a><img src="https://img.shields.io/badge/laravel-5.5+-59a9f8.svg?style=flat" ></a>
+</p>
 
- 支持钉钉机器人 企业微信机器人 微信模板消息/广播 Openexchangerates汇率实时获取
+ #### 支持钉钉机器人 企业微信机器人 微信模板消息/广播 Openexchangerates汇率实时获取的一个工具包
 
 - [安装说明](#composer)
 - [发布配置文件](#config)
