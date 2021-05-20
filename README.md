@@ -1,19 +1,40 @@
-## chowjiawei/laravel-help-plugin
-laravel辅助工具包
+# Laravel辅助工具包
 
-### Integrating useful auxiliary functions into laravel
+Integrating useful auxiliary functions into laravel
 
-##下载方式：composer
+- [安装说明](#composer)
+- [发布配置文件](#config)
+- [注册门面方法](#facade)
+- [消息驱动](#channel)
+- [直接消息推送](#usem)
+- [国家获取转换](#country)
+- [Openexchangerates汇率实时获取](#openexchangerates)
 
-composer require chowjiawei/laravel-help-plugin
+<a name="composer"></a>
+# 安装说明
 
-## 发布配置文件
+环境要求
+
+- php => ^7.0
+- guzzlehttp/guzzle => ^6.3"
+- laravel/framework => ~5.5|~6.0|~7.0|~8.0,
+- overtrue/laravel-wechat => ~5.0
+
+工具包使用composer安装
+
+`composer require chowjiawei/laravel-help-plugin`
+
+<a name="config"></a>
+# 发布配置文件
+
+- 使用工具包请运行Artisan命令
 
 `php artisan vendor:publish --provider="Chowjiawei\Helpers\Providers\HelpPluginServiceProvider"`
 
-如若使用微信模板消息则发布easywechat配置:
+- 如若使用微信模板消息则需要发布easywechat配置:
 
 `php artisan vendor:publish --provider="Overtrue\LaravelWeChat\ServiceProvider"`
+
 
 ```
 <?php
@@ -94,68 +115,16 @@ return [
             // ],
         ],
     ],
-
-    /*
-     * 开放平台第三方平台
-     */
-    // 'open_platform' => [
-    //     'default' => [
-    //         'app_id'  => env('WECHAT_OPEN_PLATFORM_APPID', ''),
-    //         'secret'  => env('WECHAT_OPEN_PLATFORM_SECRET', ''),
-    //         'token'   => env('WECHAT_OPEN_PLATFORM_TOKEN', ''),
-    //         'aes_key' => env('WECHAT_OPEN_PLATFORM_AES_KEY', ''),
-    //     ],
-    // ],
-
-    /*
-     * 小程序
-     */
-    'mini_program' => [
-        'default' => [
-            'app_id'  => env('WECHAT_MINI_PROGRAM_APPID', ''),
-            'secret'  => env('WECHAT_MINI_PROGRAM_SECRET', ''),
-            'token'   => env('WECHAT_MINI_PROGRAM_TOKEN', ''),
-            'aes_key' => env('WECHAT_MINI_PROGRAM_AES_KEY', ''),
-        ],
-    ],
-
-    /*
-     * 微信支付
-     */
-    // 'payment' => [
-    //     'default' => [
-    //         'sandbox'            => env('WECHAT_PAYMENT_SANDBOX', false),
-    //         'app_id'             => env('WECHAT_PAYMENT_APPID', ''),
-    //         'mch_id'             => env('WECHAT_PAYMENT_MCH_ID', 'your-mch-id'),
-    //         'key'                => env('WECHAT_PAYMENT_KEY', 'key-for-signature'),
-    //         'cert_path'          => env('WECHAT_PAYMENT_CERT_PATH', 'path/to/cert/apiclient_cert.pem'),    // XXX: 绝对路径！！！！
-    //         'key_path'           => env('WECHAT_PAYMENT_KEY_PATH', 'path/to/cert/apiclient_key.pem'),      // XXX: 绝对路径！！！！
-    //         'notify_url'         => 'http://example.com/payments/wechat-notify',                           // 默认支付结果通知地址
-    //     ],
-    //     // ...
-    // ],
-
-    /*
-     * 企业微信
-     */
-    // 'work' => [
-    //     'default' => [
-    //         'corp_id' => 'xxxxxxxxxxxxxxxxx',
-    //         'agent_id' => 100020,
-    //         'secret'   => env('WECHAT_WORK_AGENT_CONTACTS_SECRET', ''),
-    //          //...
-    //      ],
-    // ],
 ];
 
-
-
 ```
-## 注册facade
 
-打开config/app.php
+<a name="facade"></a>
+# 注册facade
 
-找到 'providers'添加
+打开`config/app.php`
+
+找到 `providers` 项添加
 
 ```
 \Chowjiawei\Helpers\Providers\HelpPluginServiceProvider::class,
@@ -168,13 +137,17 @@ return [
 ```
 
 
-目前支持以下驱动，具体使用方式详见laravel中国文档 
+<a name="channel"></a>
+# 消息驱动
 
-``
-https://learnku.com/docs/laravel/7.x/notifications/7489#specifying-delivery-channels
-``
 
-#### 钉钉机器人消息发送驱动 
+- [钉钉机器人](#dingtalk)
+- [企业微信机器人](#wechat)
+- [微信模板消息](#wechatTemp)
+
+
+<a name="dingtalk"></a>
+## 钉钉机器人消息发送驱动 
 
 ```
 use Chowjiawei\Helpers\Channels\DingtalkRobotChannel;
@@ -184,7 +157,9 @@ public function via($notifiable)
     return [DingtalkRobotChannel::class];
 }
 ```
-#### 微信机器人消息发送驱动
+
+<a name="wechat"></a>
+## 微信机器人消息发送驱动
 
 ```
 use Chowjiawei\Helpers\Channels\WechatRobotChannel;
@@ -195,7 +170,8 @@ public function via($notifiable)
 }
 ```
 
-#### 微信模板消息发送驱动
+<a name="wechatTemp"></a>
+## 微信模板消息发送驱动
 
 ```
 use Chowjiawei\Helpers\Channels\WechatTemplateMessageChannel;
@@ -212,23 +188,25 @@ Notification::route('wechat_robot', $key)->notify(new YourNotification());
 Notification::route('Wechat_template_message', $key)->notify(new YourNotification());
 ```
 
+<a name="usem"></a>
+# 直接消息推送
 
-### 直接使用消息驱动
-
-#### 钉钉:
+### 钉钉:
 
 `use Chowjiawei\Helpers\Notifications\DingtalkRobotNotification;`
 
 `Notification::route('dingtalk_robot', env("DINGTALK_ROBOT"))
      ->notify(new DingtalkRobotNotification($message,$title));`
-#### 企业微信:
+### 企业微信:
 
 `use Chowjiawei\Helpers\Notifications\WechatRobotNotification;`
 
 `Notification::route('wechat_robot', env("WECHAT_ROBOT)"))
 ->notify(new DingtalkRobotNotification($message));`
 
-#### 微信模板消息:
+### 微信模板消息:
+
+
 
 `use Chowjiawei\Helpers\Notifications\WechatTemplateMessageNotification;`
 
@@ -275,8 +253,9 @@ Notification::route('Wechat_template_message', $key)->notify(new YourNotificatio
 
 ``` 
 
+<a name="country"></a>
+# 国家获取转换
 
-### 获取全部国家代码及名字
 
 ```
 use Chowjiawei\Helpers\PhpHelps\LaravelHelp;
@@ -293,17 +272,16 @@ $help->getCountryName('CN');
 $help->getCountryName('China');
 ```
 
-facade方式：
+or
+
 ```
 Helper::allCountry();
 ```
-
-### 获取实时汇率
+<a name="openexchangerates"></a>
+# Openexchangerates汇率实时获取
 
 ```
 use Chowjiawei\Helpers\Exchange\Exchange;
 
 $help->getChangerates();
 ```
-
-# 文档待完善
