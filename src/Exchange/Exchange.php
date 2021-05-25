@@ -29,4 +29,31 @@ class Exchange extends Controller
         $value = json_decode($response->getBody()->getContents(), true);
         return $value;
     }
+
+    /**
+     * Get Exchange
+     *
+     * 获取特定汇率
+     *
+     * $symbols array
+     * @return \Illuminate\Http\Response
+     */
+    public function getSymbolChangerates($symbols = [])
+    {
+        $symbol = implode(" ", $symbols);
+        $appid = config('helpers.exchange.appid');
+        $baseCurrency = config('helpers.exchange.base_currency');
+        if ($symbols) {
+            $url = 'https://openexchangerates.org/api/latest.json?app_id=' . $appid . '&base=' . $baseCurrency . '＆symbols =' . $symbol;
+        } else {
+            $url = 'https://openexchangerates.org/api/latest.json?app_id=' . $appid . '&base=' . $baseCurrency;
+        }
+        $client = new Client([
+            'timeout' => 52.0,
+        ]);
+
+        $response = $client->request('GET', $url);
+        $value = json_decode($response->getBody()->getContents(), true);
+        return $value;
+    }
 }
