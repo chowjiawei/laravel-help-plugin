@@ -20,6 +20,7 @@
      - [钉钉机器人](#usedingtalk)
      - [企业微信机器人](#usewechat)
      - [微信模板消息](#usewechatTemp)
+     - [Artisan命令示例](#artisan)
 - [国家获取转换](#country)
 - [Openexchangerates汇率实时获取](#openexchangerates)
 
@@ -273,6 +274,10 @@ Notification::route('Wechat_template_message', $key)->notify(new YourNotificatio
         Notification::route('WechatTemplateMessage', $user)->notify(new WechatTemplateMessageNotification($data, $template));
 
 ``` 
+
+<a name="artisan"></a>
+### Artisan命令示例:
+
 由于业务不同，工具将不提供发布通知Artisan命令
 
 您如果需要一个可使用的Artisan命令来进行业务通知可以参考以下示例，根据相关业务进行调整：
