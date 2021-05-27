@@ -273,6 +273,76 @@ Notification::route('Wechat_template_message', $key)->notify(new YourNotificatio
         Notification::route('WechatTemplateMessage', $user)->notify(new WechatTemplateMessageNotification($data, $template));
 
 ``` 
+由于业务不同，工具将不提供发布通知Artisan命令
+
+您如果需要一个可使用的Artisan命令来进行业务通知可以参考以下示例，根据相关业务进行调整：
+```
+<?php
+
+namespace App\Console\Commands;
+
+use App\Notifications\BusinessDayNotification;
+use App\Services\NoticeService;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Notification;
+
+class BusinessNotifyCommand extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'business:notify {text=:  通知内容} {--key= :  机器人key，填写则使用，不填写则读取env配置} ';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = '通知店铺情况';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
+    {
+        $this->output->progressStart(1);
+        $this->output->title('正在通知，请稍后！');
+        //如果有指定key就用指定key，如果没有就从目前的机器人中读取key
+        $key=$this->option('key');
+        $text = $this->argument('text');
+        //读取传入参数，传入hour则通知每小时   传入day则为每日
+        if (!$key) {
+            $key=config("helpers.dingtalk");
+        }
+        Notification::route('dingtalk_robot', $key)
+            ->notify(new BusinessDayNotification($text));
+
+        $message='机器人通知完毕';
+
+        //输出本次结果。
+        $this->output->progressFinish();
+        $this->comment($message);
+    }
+}
+
+
+```
+
 
 <a name="country"></a>
 # 国家获取转换
@@ -303,6 +373,53 @@ Helper::allCountry();
 
 ```
 use Chowjiawei\Helpers\Exchange\Exchange;
-
+//获取实时汇率
 $help->getChangerates();
+```
+将为您返回完整的汇率及接口信息
+```
+{
+  "disclaimer": "Usage subject to terms: https://openexchangerates.org/terms",
+  "license": "https://openexchangerates.org/license",
+  "timestamp": 1622097300,
+  "base": "USD",
+  "rates": {
+    "AED": 3.6731,
+    "AFN": 79.130257,
+    "ALL": 101.073262,
+    "AMD": 520.828816,
+    "ANG": 1.796011,
+    "AOA": 643.121,
+    "ARS": 94.4963,
+    "AUD": 1.291358,
+    "AWG": 1.8,
+    "AZN": 1.700805,
+    "BAM": 1.604705,
+    "BBD": 2,
+    "BDT": 85.048855,
+    "BGN": 1.601902,
+    "BHD": 0.377012,
+    "BIF": 1974.680206,
+
+```
+```
+use Chowjiawei\Helpers\Exchange\Exchange;
+//获取特定汇率
+$help->getSymbolChangerates(['GBP','EUR','AED','CAD']);
+```
+将为您返回指定的汇率及接口信息
+```
+{
+    disclaimer: "https://openexchangerates.org/terms/",
+    license: "https://openexchangerates.org/license/",
+    "timestamp": 1424127600,
+    "base": "USD",
+    "rates": {
+        "AED": 3.67295,
+        "CAD": 0.99075,
+        "EUR": 0.793903,
+        "GBP": 0.62885
+    }
+}
+
 ```

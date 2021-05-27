@@ -44,7 +44,7 @@ class Exchange extends Controller
         $appid = config('helpers.exchange.appid');
         $baseCurrency = config('helpers.exchange.base_currency');
         if ($symbols) {
-            $url = 'https://openexchangerates.org/api/latest.json?app_id=' . $appid . '&base=' . $baseCurrency . '＆symbols =' . $symbol;
+            $url = 'https://openexchangerates.org/api/latest.json?app_id=' . $appid . '&base=' . $baseCurrency . '＆symbols=' . $symbol;
         } else {
             $url = 'https://openexchangerates.org/api/latest.json?app_id=' . $appid . '&base=' . $baseCurrency;
         }
