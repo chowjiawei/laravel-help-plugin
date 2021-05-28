@@ -2,6 +2,7 @@
 
 namespace Chowjiawei\Helpers\Providers;
 
+use Chowjiawei\Helpers\Facade\Helper;
 use Illuminate\Support\ServiceProvider;
 
 class HelpPluginServiceProvider extends ServiceProvider
