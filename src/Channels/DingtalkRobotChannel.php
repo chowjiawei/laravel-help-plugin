@@ -17,7 +17,7 @@ class DingtalkRobotChannel
     public function send($notifiable, Notification $notification)
     {
         $message = $notification->toDingtalkRobot($notifiable);
-        $key = $notifiable->routes['dingtalk_robot'];
+        $keys = $notifiable->routes['dingtalk_robot'];
         if (is_array($message)) {
             $data = array("msgtype" => "markdown", "markdown" => [
                 "title" => $message[1],
@@ -30,9 +30,9 @@ class DingtalkRobotChannel
             ]);
         }
         $client = new Client();
-        $key = is_array($key) ? $key : array($key);
-        foreach ($key as $keys) {
-            $url = 'https://oapi.dingtalk.com/robot/send?access_token=' . $keys;
+        $keys = is_array($keys) ? $keys : array($keys);
+        foreach ($keys as $key) {
+            $url = 'https://oapi.dingtalk.com/robot/send?access_token=' . $key;
             $response = $client->post($url, [\GuzzleHttp\RequestOptions::JSON => $data]);
         }
     }
