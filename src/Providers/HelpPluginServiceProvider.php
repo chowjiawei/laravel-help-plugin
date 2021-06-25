@@ -20,10 +20,10 @@ class HelpPluginServiceProvider extends ServiceProvider
             __DIR__ . '/../Config/helpers.php' => config_path('helpers.php'),
         ]);
         $this->publishes([
-            __DIR__ . '/../Console/Commands/extendCommand.php' => config_path('../app/Console/Commands/extendCommand.php'),
+            __DIR__ . '/../Console/Commands/extendCommand.php' => app_path('Console/Commands/extendCommand.php'),
         ]);
         $this->publishes([
-            __DIR__ . '/../Console/Commands/BackupDatabaseCommand.php' => config_path('../app/Console/Commands/BackupDatabaseCommand.php'),
+            __DIR__ . '/../Console/Commands/BackupDatabaseCommand.php' => app_path('Console/Commands/BackupDatabaseCommand.php'),
         ]);
     }
 }
