@@ -10,9 +10,12 @@ use Illuminate\Notifications\Notification;
 class WechatRobotNotification extends Notification
 {
     use Queueable;
+
+    public $message;
+
     public function __construct($message)
     {
-        $this->message=$message;
+        $this->message = $message;
     }
 
     public function via($notifiable)

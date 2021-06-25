@@ -10,10 +10,14 @@ use Illuminate\Notifications\Notification;
 class DingtalkRobotNotification extends Notification
 {
     use Queueable;
+
+    public $text;
+    public $title;
+
     public function __construct($text, $title)
     {
-        $this->text=$text;
-        $this->title=$title;
+        $this->text = $text;
+        $this->title = $title;
     }
 
     public function via($notifiable)

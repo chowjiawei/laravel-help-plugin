@@ -13,6 +13,9 @@ class WechatTemplateMessageNotification extends Notification
 {
     use Queueable;
 
+    public $data;
+    public $template;
+
     public function __construct($data, $template = null)
     {
         $this->data = $data;
@@ -26,9 +29,9 @@ class WechatTemplateMessageNotification extends Notification
 
     public function toWechatTemplateMessage($notifiable)
     {
-        $data=$this->data;
-        $template=$this->template;
-        $allData=[$data,$template];
+        $data = $this->data;
+        $template = $this->template;
+        $allData = [$data, $template];
         return $allData;
     }
 }

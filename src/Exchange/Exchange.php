@@ -13,8 +13,6 @@ class Exchange extends Controller
     /**
      * Get Exchange
      *
-     * 获取汇率
-     *
      * @return \Illuminate\Http\Response
      */
     public function getChangerates()
@@ -26,14 +24,11 @@ class Exchange extends Controller
         ]);
         $url = 'https://openexchangerates.org/api/latest.json?app_id=' . $appid . '&base=' . $baseCurrency;
         $response = $client->request('GET', $url);
-        $value = json_decode($response->getBody()->getContents(), true);
-        return $value;
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     /**
      * Get Exchange
-     *
-     * 获取特定汇率
      *
      * $symbols array
      * @return \Illuminate\Http\Response
@@ -51,9 +46,7 @@ class Exchange extends Controller
         $client = new Client([
             'timeout' => 52.0,
         ]);
-
         $response = $client->request('GET', $url);
-        $value = json_decode($response->getBody()->getContents(), true);
-        return $value;
+        return json_decode($response->getBody()->getContents(), true);
     }
 }

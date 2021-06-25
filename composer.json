@@ -1,7 +1,7 @@
 {
     "name": "chowjiawei/laravel-help-plugin",
     "type": "library",
-    "description": "Integrating useful auxiliary functions into laravel",
+    "description": "Integrating useful auxiliary functions into laravel,Assistant tools based on laravel.",
     "keywords": ["laravel", "plugin", "dingtalk", "wechat", "robot", "exchange"],
     "homepage": "https://github.com/chowjiawei/laravel-help-plugin",
     "license": "MIT",

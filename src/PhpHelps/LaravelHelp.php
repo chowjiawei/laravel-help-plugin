@@ -5,36 +5,13 @@ namespace Chowjiawei\Helpers\PhpHelps;
 
 class LaravelHelp
 {
+    public $country;
+
     public function __construct()
     {
         $this->country=config('helpers.country');
     }
-    /**
-     * Get Two Number Count.
-     *
-     * @param string|integer $num1
-     * @param string|integer $num2
-     * @return  integer
-     */
-    public function getCountNumber($num1, $num2)
-    {
-        return $num1 + $num2;
-    }
 
-    /**
-     * Get A Array Count.
-     *
-     * @param array $array
-     * @return  integer
-     */
-    public function getArrayCount($array)
-    {
-        $sum = 0;
-        foreach ($array as $num) {
-            $sum += $num;
-        }
-        return $sum;
-    }
 
     /**
      * Get All Country.
@@ -78,8 +55,6 @@ class LaravelHelp
      */
     public function getAllExchangeCode(): array
     {
-        return config('helpers.exchange_code');
+        return config('helpers.exchangeCode');
     }
-
-
 }
