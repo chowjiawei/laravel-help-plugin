@@ -31,7 +31,6 @@ class WechatTemplateMessageNotification extends Notification
     {
         $data = $this->data;
         $template = $this->template;
-        $allData = [$data, $template];
-        return $allData;
+        return [$data, $template];
     }
 }

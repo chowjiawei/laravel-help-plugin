@@ -13,7 +13,7 @@ class ExtendCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'extend { --chinese :  Use Chinese, default English}';
+    protected $signature = 'extend { --chinese :  Use Chinese, default English }';
 
     /**
      * The console command description.

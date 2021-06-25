@@ -18,11 +18,7 @@ class HelpPluginServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../Config/helpers.php' => config_path('helpers.php'),
-        ]);
-        $this->publishes([
             __DIR__ . '/../Console/Commands/ExtendCommand.php' => app_path('Console/Commands/ExtendCommand.php'),
-        ]);
-        $this->publishes([
             __DIR__ . '/../Console/Commands/BackupDatabaseCommand.php' => app_path('Console/Commands/BackupDatabaseCommand.php'),
         ]);
     }
