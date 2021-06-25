@@ -1,6 +1,6 @@
 <?php
 
-namespace Chowjiawei\Helpers\Exchange\Commands;
+namespace Chowjiawei\Helpers\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
