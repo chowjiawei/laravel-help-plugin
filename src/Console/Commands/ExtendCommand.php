@@ -6,14 +6,14 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
 
-class MainCommand extends Command
+class ExtendCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'main { --chinese :  Use Chinese, default English}';
+    protected $signature = 'extend { --chinese :  Use Chinese, default English}';
 
     /**
      * The console command description.
