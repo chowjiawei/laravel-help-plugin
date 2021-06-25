@@ -13,14 +13,14 @@ class MainCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'main { --chinese :  使用中文命令，不加默认英文}';
+    protected $signature = 'main { --chinese :  Use Chinese, default English}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '拓展命令';
+    protected $description = 'extend command';
 
     /**
      * Create a new command instance.
