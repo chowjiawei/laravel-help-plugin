@@ -48,6 +48,17 @@
 
 `php artisan vendor:publish --provider="Chowjiawei\Helpers\Providers\HelpPluginServiceProvider"`
 
+
+在 `app\Http\Kernel.php` 内  添加配置
+
+```
+
+    protected $middleware = [
+    \App\Http\Middleware\Ban::class
+    ];
+
+
+```
 - 如若使用微信模板消息则需要发布easywechat配置:
 
 `php artisan vendor:publish --provider="Overtrue\LaravelWeChat\ServiceProvider"`

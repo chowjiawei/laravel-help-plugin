@@ -2,6 +2,15 @@
 
 return [
 
+    "ban" => [
+        "enable" => true, //Enable Ban
+        "user_model" => \App\Models\User::class,   //eg:"user_model" => \App\Models\User::class, //Ban user model
+        "user_model_primary_key_id" => 'id',  //Ban user model primary_key_id
+        "user_id_ban_enable" => true, //Enable user Ban
+        "ip_ban_enable" => true, //Enable user ip
+        "mac_ban_enable" => true, //Enable user mac
+    ],
+
     //configuration Openexchangerates Api Information ******************************************************************************
 
     "exchange" => [
