@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
+use GeoIp2\Database\Reader;
 
 class Ban
 {
@@ -15,20 +16,14 @@ class Ban
      */
     public function handle($request, Closure $next)
     {
-
         if (config('helpers.ban.enable')) {
             //ban user id
             $userId = optional(Auth::user())->id;
-            try {
-                if (config('helpers.ban.user_id_ban_enable' && $userId)) {
-                    if ($findBanUser = \App\Models\Ban::where('user_id', $userId)->first()) {
-                        throw new \ErrorException("Your device or account is blocked");
-                    }
+            if (config('helpers.ban.user_id_ban_enable') && $userId) {
+                if (\App\Models\Ban::where('user_id', $userId)->first()) {
+                    throw new \ErrorException("Your device or account is blocked");
                 }
-            } catch (\Exception $e) {
-
             }
-
 
             if (config('helpers.ban.ip_ban_enable')) {
                 //ban ip
