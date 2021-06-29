@@ -26,6 +26,7 @@
      - [Artisan命令示例](#artisan)
 - [国家获取转换](#country)
 - [Openexchangerates汇率实时获取](#openexchangerates)
+- [网站封禁-文档待补充，可以自己挖掘](#ban)
 
 <a name="composer"></a>
 # 安装说明
