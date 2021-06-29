@@ -22,6 +22,7 @@ class HelpPluginServiceProvider extends ServiceProvider
             __DIR__ . '/../Console/Commands/BackupDatabaseCommand.php' => app_path('Console/Commands/BackupDatabaseCommand.php'),
             __DIR__ . '/../Middleware/Ban.php' => app_path('Http/Middleware/Ban.php'),
             __DIR__ . '/../Models/Ban.php' => app_path('Models/Ban.php'),
+            __DIR__ . '/../Database/migrations/2021_06_29_020823_create_ban_table.php' => app_path('database/migrations/2021_06_29_020823_create_ban_table.php'),
         ]);
     }
 }
