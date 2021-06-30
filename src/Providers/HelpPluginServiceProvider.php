@@ -23,6 +23,8 @@ class HelpPluginServiceProvider extends ServiceProvider
             __DIR__ . '/../Middleware/Ban.php' => app_path('Http/Middleware/Ban.php'),
             __DIR__ . '/../Models/Ban.php' => app_path('Models/Ban.php'),
             __DIR__ . '/../Database/migrations/2021_06_29_020823_create_ban_table.php' => database_path('migrations/2021_06_29_020823_create_ban_table.php'),
+            __DIR__ . '/../Resources/views/errors.blade.php' => resource_path('views/helpers/errors.blade.php'),
+
         ]);
     }
 }

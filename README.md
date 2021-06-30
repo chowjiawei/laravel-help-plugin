@@ -542,3 +542,5 @@ $help->getSymbolChangerates(['GBP','EUR','AED','CAD']);
 ![img_3.png](readme/images/img_3.png)
 
 ![img_1.png](readme/images/img_1.png)
+
+我们提供了个默认视图，`views/helpers/error.balde.php`,请根据您的页面协调更改样式

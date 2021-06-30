@@ -2,9 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\Exceptions\InternalException;
 use Closure;
 use Auth;
 use GeoIp2\Database\Reader;
+use http\Exception\InvalidArgumentException;
 
 class Ban
 {
@@ -26,7 +28,7 @@ class Ban
             $userId = optional(Auth::user())->id;
             if (config('helpers.ban.user_id_ban_enable') && $userId) {
                 if (\App\Models\Ban::where('user_id', $userId)->first()) {
-                    throw new \ErrorException($message);
+                    return response()->view('helpers.errors', ['exception' => $message], 302);
                 }
             }
 
@@ -36,7 +38,7 @@ class Ban
                 $info = geoip($ip)->toArray();
                 $findBanUser = \App\Models\Ban::where('ip', $info['ip'])->first();
                 if ($findBanUser) {
-                    throw new \ErrorException($message);
+                    return response()->view('helpers.errors', ['exception' => $message], 302);
                 }
             }
 
