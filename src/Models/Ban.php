@@ -20,7 +20,7 @@ class Ban extends Model
         return $this->hasOne(config('helpers.ban.user_model'), config('helpers.ban.user_model_primary_key_id'));
     }
 
-    public function ipBan($ip,$banTime)
+    public static function ipBan($ip,$banTime)
     {
         self::create([
             'ip'=>$ip,
@@ -28,15 +28,15 @@ class Ban extends Model
         ]);
     }
 
-    public function userBan($userId,$banTime)
+    public static function userBan($userId,$banTime)
     {
         self::create([
-            'userId'=>$userId,
+            'user_id'=>$userId,
             'ban_deleted_at'=>$banTime
         ]);
     }
 
-    public function macBan($mac,$banTime)
+    public static function macBan($mac,$banTime)
     {
         self::create([
             'mac'=>$mac,
