@@ -175,7 +175,7 @@ class ExtendCommand extends Command
                     $banType = $this->choice(
                         $language['banType'],
                         ['ip', 'mac', 'user'],
-                        0,
+                        0
                     );
                     switch ($banType){
                         case 'ip':
