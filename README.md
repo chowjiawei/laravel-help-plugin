@@ -33,6 +33,7 @@
   - [mac地址封禁](#banmac)
   - [用户封禁](#banuser)
   - [封禁记录](#banlog)
+  - [解除封禁](#banlift)
 
 <a name="composer"></a>
 # 安装说明
@@ -514,6 +515,12 @@ $help->getSymbolChangerates(['GBP','EUR','AED','CAD']);
   
 
 `Ban::userBan('7666', \Carbon\Carbon::now())` 记录下此用户id
-### userid如何获取？
-用户id为您用户模型的主键id
+  ### userid如何获取？
+  用户id为您用户模型的主键id
+
+
+<a name="banlift"></a>
+## 解除封禁
+
+`Ban::liftBan('199.199.199.199', 'ip')` 解除对该ip的封禁，支持`ip` `mac` `user`
   
