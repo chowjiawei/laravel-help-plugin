@@ -496,7 +496,7 @@ $help->getSymbolChangerates(['GBP','EUR','AED','CAD']);
 
 在您要实现封禁的业务逻辑中，使用 
 
-`Ban::ipBan('199.199.199.199')` 记录下此ip地址   
+`Ban::ipBan('199.199.199.199', \Carbon\Carbon::now())` 记录下此ip地址   
   ### ip地址如何获取？
   我们为您内置了geoip2包，您可以使用
   ```
@@ -505,7 +505,7 @@ $help->getSymbolChangerates(['GBP','EUR','AED','CAD']);
   $info['ip']即为客户端IP地址
   ```
 
-`Ban::macBan('24-4B-99-02-75-C3')` 记录下mac地址
+`Ban::macBan('24-4B-99-02-75-C3', \Carbon\Carbon::now())` 记录下mac地址
   ### mac地址如何获取？
   您可以使用以下语句获取mac地址
   ```
@@ -513,7 +513,7 @@ $help->getSymbolChangerates(['GBP','EUR','AED','CAD']);
   ```
   
 
-`Ban::userBan('7666')` 记录下此用户id
+`Ban::userBan('7666', \Carbon\Carbon::now())` 记录下此用户id
 ### userid如何获取？
 用户id为您用户模型的主键id
   
