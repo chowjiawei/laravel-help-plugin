@@ -3,12 +3,14 @@
 return [
 
     "ban" => [
-        "enable" => true, //Enable Ban
+        "enable" => false, //Enable Ban
         "user_model" => \App\Models\User::class,   //eg:"user_model" => \App\Models\User::class, //Ban user model
         "user_model_primary_key_id" => 'id',  //Ban user model primary_key_id
-        "user_id_ban_enable" => true, //Enable user Ban
-        "ip_ban_enable" => true, //Enable user ip
-        "mac_ban_enable" => true, //Enable user mac
+        "user_id_ban_enable" => false, //Enable user Ban
+        "ip_ban_enable" => false, //Enable user ip
+        "mac_ban_enable" => false, //Enable user mac
+        "exception_type" => 'ErrorException', //Ban exception type
+        "exception_message" => 'Your device or account is blocked', //Ban exception message
     ],
 
     //configuration Openexchangerates Api Information ******************************************************************************

@@ -17,11 +17,16 @@ class Ban
     public function handle($request, Closure $next)
     {
         if (config('helpers.ban.enable')) {
+
+            $message=config('helpers.ban.exception_message');
+            $exceptionType=config('helpers.ban.exception_type');
+
+
             //ban user id
             $userId = optional(Auth::user())->id;
             if (config('helpers.ban.user_id_ban_enable') && $userId) {
                 if (\App\Models\Ban::where('user_id', $userId)->first()) {
-                    throw new \ErrorException("Your device or account is blocked");
+                    throw new \ErrorException($message);
                 }
             }
 
@@ -31,13 +36,15 @@ class Ban
                 $info = geoip($ip)->toArray();
                 $findBanUser = \App\Models\Ban::where('ip', $info['ip'])->first();
                 if ($findBanUser) {
-                    throw new \ErrorException("Your device or account is blocked");
+                    throw new \ErrorException($message);
                 }
             }
 
-            //ban mac
-        }
+            if (config('helpers.ban.mac_ban_enable')) {
+                //ban mac
 
+            }
+        }
         return $next($request);
     }
 }
