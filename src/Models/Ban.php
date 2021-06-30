@@ -23,26 +23,44 @@ class Ban extends Model
 
     public static function ipBan($ip, $banTime)
     {
-        self::create([
-            'ip' => $ip,
-            'ban_deleted_at' => $banTime
-        ]);
+        $isExists=self::where('ip',$ip)->first();
+        if($isExists){
+            $isExists->ban_deleted_at=$banTime;
+            $isExists->save();
+        }else{
+            self::create([
+                'ip' => $ip,
+                'ban_deleted_at' => $banTime
+            ]);
+        }
     }
 
     public static function userBan($userId, $banTime)
     {
-        self::create([
-            'user_id' => $userId,
-            'ban_deleted_at' => $banTime
-        ]);
+        $isExists=self::where('user_id',$userId)->first();
+        if($isExists){
+            $isExists->ban_deleted_at=$banTime;
+            $isExists->save();
+        }else{
+            self::create([
+                'user_id' => $userId,
+                'ban_deleted_at' => $banTime
+            ]);
+        }
     }
 
     public static function macBan($mac, $banTime)
     {
-        self::create([
-            'mac' => $mac,
-            'ban_deleted_at' => $banTime
-        ]);
+        $isExists=self::where('mac',$mac)->first();
+        if($isExists){
+            $isExists->ban_deleted_at=$banTime;
+            $isExists->save();
+        }else{
+            self::create([
+                'mac' => $mac,
+                'ban_deleted_at' => $banTime
+            ]);
+        }
     }
 
     public static function liftBan($value, $type)

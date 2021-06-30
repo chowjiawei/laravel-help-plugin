@@ -520,6 +520,33 @@ $help->getSymbolChangerates(['GBP','EUR','AED','CAD']);
   用户id为您用户模型的主键id
 
 
+
+### 我们为您提供了个自由更改的例子
+
+以下例子将对10秒内连续访问10次的ip进行封禁，并通知到钉钉机器人
+
+```
+if (config('helpers.ban.ip_ban_enable')) {
+                //ban ip
+                $ip = last(request()->getClientIps());
+                $info = geoip($ip)->toArray();
+                $cacheIp=Cache::get($info['ip'])?Cache::get($info['ip']):0;
+
+                Cache::put($info['ip'],$cacheIp+1,10);
+                
+                if(Cache::get($info['ip'])==10){
+                    \App\Models\Ban::ipBan($info['ip'],'2021-07-01');
+                    Notification::route('dingtalk_robot', config('helpers.dingtalk'))
+                        ->notify(new DingtalkRobotNotification($info['ip'].'连续高频访问Api,考虑恶意攻击，系统自动封禁该ip一日', "通知"));
+                }
+                $findBanUser = \App\Models\Ban::where('ip', $info['ip'])->where('ban_deleted','>', Carbon::now())->first();
+                if ($findBanUser) {
+                    return response()->view('helpers.errors', ['exception' => $message], 302);
+                }
+            }
+```
+
+
 <a name="banlift"></a>
 ## 解除封禁
 
