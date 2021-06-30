@@ -34,6 +34,7 @@
   - [用户封禁](#banuser)
   - [封禁记录](#banlog)
   - [解除封禁](#banlift)
+- [扩展Artisan命令](#extend)
 
 <a name="composer"></a>
 # 安装说明
@@ -523,4 +524,19 @@ $help->getSymbolChangerates(['GBP','EUR','AED','CAD']);
 ## 解除封禁
 
 `Ban::liftBan('199.199.199.199', 'ip')` 解除对该ip的封禁，支持`ip` `mac` `user`
-  
+
+
+<a name="extend"></a>
+# 扩展Artisan命令
+插件被您提供了一个支持中文和英文的扩展命令，您可以用命令呼出，命令提供了以下功能
+
+```php artisan extend --chinese ```中文
+
+```php artisan extend  ```英文
+
+  - 创建Rest规范控制器
+  - 备份数据库
+  - 命令封禁
+  - 命令解封
+![img_3.png](readme/images/img_3.png)
+![img_1.png](readme/images/img_1.png)

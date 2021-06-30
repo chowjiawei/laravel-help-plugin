@@ -18,7 +18,7 @@ class CreateBanTable extends Migration
             $table->string('ip')->nullable();
             $table->string('mac')->nullable();
             $table->timestamp('ban_deleted_at')->nullable();
-            $table->string('user_id');
+            $table->string('user_id')->nullable();
             $table->timestamps();
         });
     }
