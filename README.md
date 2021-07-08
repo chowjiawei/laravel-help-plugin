@@ -37,6 +37,12 @@
   - [封禁记录](#banlog)
   - [解除封禁](#banlift)
 - [扩展Artisan命令](#extend)
+  - [代码生成器](#generate)
+    - [钉钉Notification模板生成](#generateDingtalk)
+    - [企业微信Notification模板生成](#generateWechat)
+    - [微信模板消息Notification模板生成](#generateWechat)
+  - [模型生成](#generateModel)
+  - [控制器生成](#generateController)
 
 <a name="composer"></a>
 # 安装说明
@@ -292,75 +298,8 @@ Notification::route('Wechat_template_message', $key)->notify(new YourNotificatio
 <a name="artisan"></a>
 ### Artisan命令示例:
 
-由于业务不同，工具将不提供发布通知Artisan命令
+由于业务不同，工具默认提供了通知Notification模板，可以通过extend Artisan命令选择代码生成器生成
 
-您如果需要一个可使用的Artisan命令来进行业务通知可以参考以下示例，根据相关业务进行调整：
-```
-<?php
-
-namespace App\Console\Commands;
-
-use App\Notifications\BusinessDayNotification;
-use App\Services\NoticeService;
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Notification;
-
-class BusinessNotifyCommand extends Command
-{
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'business:notify {text=:  通知内容} {--key= :  机器人key，填写则使用，不填写则读取env配置} ';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = '通知店铺情况';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
-    {
-        $this->output->progressStart(1);
-        $this->output->title('正在通知，请稍后！');
-        //如果有指定key就用指定key，如果没有就从目前的机器人中读取key
-        $key=$this->option('key');
-        $text = $this->argument('text');
-        //读取传入参数，传入hour则通知每小时   传入day则为每日
-        if (!$key) {
-            $key=config("helpers.dingtalk");
-        }
-        Notification::route('dingtalk_robot', $key)
-            ->notify(new BusinessDayNotification($text));
-
-        $message='机器人通知完毕';
-
-        //输出本次结果。
-        $this->output->progressFinish();
-        $this->comment($message);
-    }
-}
-
-
-```
 
 
 <a name="country"></a>
@@ -573,3 +512,13 @@ if (config('helpers.ban.ip_ban_enable')) {
 ![img_1.png](readme/images/img_1.png)
 
 我们提供了个默认视图，`views/helpers/error.balde.php`,请根据您的页面协调更改样式
+
+
+- [代码生成器](#generate)
+  - [钉钉Notification模板生成](#generateDingtalk)
+  - [企业微信Notification模板生成](#generateWechat)
+  - [微信模板消息Notification模板生成](#generateWechat)
+  - [模型生成](#generateModel)
+  - [控制器生成](#generateController)
+  
+待完善
