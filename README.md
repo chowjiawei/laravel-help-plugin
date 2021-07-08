@@ -2,7 +2,7 @@
 
 本包将持续更新！
 
-详细文档：https://learnku.com/docs/laravel-help-plugin/1.2.6
+详细文档：https://learnku.com/docs/laravel-help-plugin/1.2.8
 
 
 # Laravel辅助工具包
