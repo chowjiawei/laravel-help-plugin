@@ -1,6 +1,6 @@
 <?php
 
-namespace Chowjiawei\Helpers\Console;
+namespace Chowjiawei\Helpers\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
@@ -127,21 +127,26 @@ class GenerateCommand extends GeneratorCommand
                 $filename = substr(strrchr($path, "/"), 1);
                 $this->info('The file : ' . $filename . '  already exists');
             }
+            return true;
         }
         if ($name == 'dingtalk') {
             $path = 'app/Notifications/DingtalkRobotNotification.php';
             $stub = $this->files->get($this->getStub());
-            if (!$this->files->exists($path)) {
+        }
 
-                $this->files->put($path, $stub);
+        if ($name == 'Wechat') {
+            $path = 'app/Notifications/WechatNotification.php';
+            $stub = $this->files->get($this->getStub());
+        }
+        if (!$this->files->exists($path)) {
 
-                $filename = substr(strrchr($path, "/"), 1);
-                $this->info('create : ' . $filename . '  success');
-            } else {
-                $filename = substr(strrchr($path, "/"), 1);
-                $this->info('The file : ' . $filename . '  already exists');
-            }
+            $this->files->put($path, $stub);
 
+            $filename = substr(strrchr($path, "/"), 1);
+            $this->info('create : ' . $filename . '  success');
+        } else {
+            $filename = substr(strrchr($path, "/"), 1);
+            $this->info('The file : ' . $filename . '  already exists');
         }
         return true;
     }
