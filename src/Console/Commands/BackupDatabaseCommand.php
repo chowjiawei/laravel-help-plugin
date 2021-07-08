@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Chowjiawei\Helpers\Console\Commands;
 
 use Illuminate\Console\Command;
 

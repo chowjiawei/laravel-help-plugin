@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Chowjiawei\Helpers\Console\Commands;
 
 use App\Models\Ban;
 use Illuminate\Console\Command;
@@ -138,17 +138,18 @@ class ExtendCommand extends Command
                         ['Dingtalk', 'Wechat', 'WechatTemplateMessageNotification'],
                         0
                     );
+
                     switch ($generateType) {
                         case 'Dingtalk':
-                            $this->output->title($language['generate_dingtalk']);
+                            $this->output->title($language['generateDingtalk']);
                             Artisan::call("generate Dingtalk");
                             break;
                         case 'Wechat':
-                            $this->output->title($language['generate_wechat']);
+                            $this->output->title($language['generateWechat']);
                             Artisan::call("generate Wechat");
                             break;
                         case 'WechatTemplateMessageNotification':
-                            $this->output->title($language['generate_wechatTemplateMessage']);
+                            $this->output->title($language['generateWechatTemplateMessage']);
                             Artisan::call("generate WechatTemplateMessage");
                             break;
                     }

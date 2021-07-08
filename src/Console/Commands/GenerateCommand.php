@@ -59,15 +59,9 @@ class GenerateCommand extends GeneratorCommand
     public function handle()
     {
         $name = strtolower($this->argument('name'));
-
-        if ($name !== 'dingtalk' && $name !== 'wechat' && $name !== 'wechatTemplateMessage') {
-
-
+        if ($name !== 'dingtalk' && $name !== 'wechat' && $name !== 'wechattemplatemessage') {
             $isModel = $this->option('model');
-
             $isController = $this->option('controller');
-
-
             if (!$isModel && !$isController) {
                 $this->error("必须指定一个类型");
                 return true;
@@ -79,7 +73,6 @@ class GenerateCommand extends GeneratorCommand
                 $result = $this->generateName($name, 'model');
             }
             $name = $result[0];
-
             $path = $result[1];
 
             if (!$this->files->isDirectory($path)) {
@@ -94,14 +87,12 @@ class GenerateCommand extends GeneratorCommand
             $nameSpace = str_replace('/', '\\', $path);
             $stub = $this->files->get($this->getStub());
             if ($isController) {
-
                 $templateData = [
                     'date' => $this->date,
                     'time' => $this->time,
                     'className' => $name . 'Controller',
                     'nameSpace' => $nameSpace,
                 ];
-
                 $renderStub = $this->getRenderStub($templateData, $stub);
                 $path .= DIRECTORY_SEPARATOR . $name . 'Controller.php';
             }
@@ -112,16 +103,12 @@ class GenerateCommand extends GeneratorCommand
                     'className' => $name,
                     'nameSpace' => $nameSpace,
                 ];
-
                 $renderStub = $this->getRenderStub($templateData, $stub);
                 $path .= DIRECTORY_SEPARATOR . $name . '.php';
             }
-
             $path = lcfirst($path);
             if (!$this->files->exists($path)) {
-
                 $this->files->put($path, $renderStub);
-
                 $filename = substr(strrchr($path, "/"), 1);
                 $this->info('create : ' . $filename . '  success');
             } else {
@@ -134,22 +121,17 @@ class GenerateCommand extends GeneratorCommand
             $path = 'app/Notifications/DingtalkRobotNotification.php';
             $stub = $this->files->get($this->getStub());
         }
-
         if ($name == 'wechat') {
             $path = 'app/Notifications/WechatNotification.php';
             $stub = $this->files->get($this->getStub());
         }
-
-        if ($name == 'wechatTemplateMessage') {
+        if ($name == 'wechattemplatemessage') {
             $path = 'app/Notifications/WechatTemplateMessageNotification.php';
             $stub = $this->files->get($this->getStub());
         }
 
-
         if (!$this->files->exists($path)) {
-
             $this->files->put($path, $stub);
-
             $filename = substr(strrchr($path, "/"), 1);
             $this->info('create : ' . $filename . '  success');
         } else {
@@ -161,11 +143,9 @@ class GenerateCommand extends GeneratorCommand
 
     protected function getRenderStub($templateData, $stub)
     {
-
         foreach ($templateData as $search => $replace) {
             $stub = str_replace('$' . $search, $replace, $stub);
         }
-
         return $stub;
     }
 
@@ -195,7 +175,6 @@ class GenerateCommand extends GeneratorCommand
     public function generateName($name, $type)
     {
         $nameArr = explode('/', $name);
-
         $nameCount = count($nameArr);
         if ($type == 'controller') {
             $path = self::CONTROLLER_PATH;
@@ -203,14 +182,12 @@ class GenerateCommand extends GeneratorCommand
         if ($type == 'model') {
             $path = self::MODEL_PATH;
         }
-
         if ($nameCount > 1) {
             for ($i = 0; $i < $nameCount - 1; $i++) {
 
                 $path .= DIRECTORY_SEPARATOR . ucfirst($nameArr[$i]);
             }
         }
-
         return [ucfirst(end($nameArr)), $path];
     }
 }
