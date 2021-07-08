@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Notifications;
+
+use Chowjiawei\Helpers\Channels\WechatRobotChannel;
+use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
+
+class BusinessDayNotification extends Notification
+{
+    use Queueable;
+
+    public function __construct($test)
+    {
+        $this->test=$test;
+    }
+
+    public function via($notifiable)
+    {
+        return [WechatRobotChannel::class];
+    }
+
+    public function toWechatRobot($notifiable)
+    {
+        return $this->text;
+    }
+}

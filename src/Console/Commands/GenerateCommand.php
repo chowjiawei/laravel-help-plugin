@@ -138,6 +138,13 @@ class GenerateCommand extends GeneratorCommand
             $path = 'app/Notifications/WechatNotification.php';
             $stub = $this->files->get($this->getStub());
         }
+
+        if ($name == 'WechatTemplateMessageNotification') {
+            $path = 'app/Notifications/WechatTemplateMessageNotification.php';
+            $stub = $this->files->get($this->getStub());
+        }
+
+
         if (!$this->files->exists($path)) {
 
             $this->files->put($path, $stub);
