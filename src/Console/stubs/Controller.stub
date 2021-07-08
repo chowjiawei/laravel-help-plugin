@@ -1,0 +1,10 @@
+<?php
+
+namespace $nameSpace;
+
+use App\Http\Controllers\Controller;
+
+class $className extends Controller
+{
+
+}
