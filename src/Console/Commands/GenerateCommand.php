@@ -59,7 +59,8 @@ class GenerateCommand extends GeneratorCommand
     public function handle()
     {
         $name = strtolower($this->argument('name'));
-        if ($name !== 'dingtalk') {
+
+        if ($name !== 'dingtalk' && $name !== 'wechat' && $name !== 'wechatTemplateMessage') {
 
 
             $isModel = $this->option('model');
@@ -134,12 +135,12 @@ class GenerateCommand extends GeneratorCommand
             $stub = $this->files->get($this->getStub());
         }
 
-        if ($name == 'Wechat') {
+        if ($name == 'wechat') {
             $path = 'app/Notifications/WechatNotification.php';
             $stub = $this->files->get($this->getStub());
         }
 
-        if ($name == 'WechatTemplateMessageNotification') {
+        if ($name == 'wechatTemplateMessage') {
             $path = 'app/Notifications/WechatTemplateMessageNotification.php';
             $stub = $this->files->get($this->getStub());
         }
@@ -177,10 +178,17 @@ class GenerateCommand extends GeneratorCommand
             return dirname(__DIR__) . '/stubs/Model.stub';
         }
 
-        if ($this->argument('name') == 'dingtalk') {
+        if ($this->argument('name') == 'Dingtalk') {
             return dirname(__DIR__) . '/stubs/DingtalkRobotNotification.stub';
         }
 
+        if ($this->argument('name') == 'Wechat') {
+            return dirname(__DIR__) . '/stubs/WechatNotification.stub';
+        }
+
+        if ($this->argument('name') == 'WechatTemplateMessage') {
+            return dirname(__DIR__) . '/stubs/WechatTemplateMessageNotification.stub';
+        }
     }
 
 

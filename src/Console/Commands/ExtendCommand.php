@@ -53,7 +53,10 @@ class ExtendCommand extends Command
     const CHINESE_BAN_TYPE = '请输入封禁类型';
     const CHINESE_LIFT_BAN_TYPE = '请输入操作类型';
     const CHINESE_SUCCESS = '您的操作已完成';
-
+    const CHINESE_GENERATE_DINGTALK = '生成DinktalkNotification';
+    const CHINESE_GENERATE_WECHAT = '生成WechatNotification';
+    const CHINESE_GENERATE_WECHATTEMPLATEMESSAGE = '生成WechatTemplateMessageNotification';
+    const CHINESE_GENERATE = '代码生成器';
 
     const ENGLISH_STORE_REST_CONTROLLER = 'Create rest style resource controller';
     const ENGLISH_DB_BACKUP = 'Backup database';
@@ -75,6 +78,10 @@ class ExtendCommand extends Command
     const ENGLISH_BAN_TYPE = 'Please enter the blocking type';
     const ENGLISH_LIFT_BAN_TYPE = 'Please enter the type of unsealing';
     const ENGLISH_SUCCESS = 'SUCCESS';
+    const ENGLISH_GENERATE_DINGTALK = 'Generate DinktalkNotification';
+    const ENGLISH_GENERATE_WECHAT = 'Generate WechatNotification';
+    const ENGLISH_GENERATE_WECHATTEMPLATEMESSAGE = 'Generate WechatTemplateMessageNotification';
+    const ENGLISH_GENERATE = 'Generate Code';
 
     public function languageChange($language = 'english')
     {
@@ -99,6 +106,10 @@ class ExtendCommand extends Command
                 'banTime' => self::ENGLISH_BAN_TIME,
                 'banType' => self::ENGLISH_LIFT_BAN_TYPE,
                 'success' => self::ENGLISH_SUCCESS,
+                'generate_dingtalk' => self::ENGLISH_GENERATE_DINGTALK,
+                'generate_wechat' => self::ENGLISH_GENERATE_WECHAT,
+                'generate_wechatTemplateMessage' => self::ENGLISH_GENERATE_WECHATTEMPLATEMESSAGE,
+                'generate' => self::ENGLISH_GENERATE,
 
             ];
         }
@@ -124,7 +135,10 @@ class ExtendCommand extends Command
                 'banTime' => self::CHINESE_BAN_TIME,
                 'banType' => self::CHINESE_LIFT_BAN_TYPE,
                 'success' => self::CHINESE_SUCCESS,
-
+                'generate_dingtalk' => self::CHINESE_GENERATE_DINGTALK,
+                'generate_wechat' => self::CHINESE_GENERATE_WECHAT,
+                'generate_wechatTemplateMessage' => self::CHINESE_GENERATE_WECHATTEMPLATEMESSAGE,
+                'generate' => self::CHINESE_GENERATE,
             ];
         }
     }
@@ -151,6 +165,7 @@ class ExtendCommand extends Command
                 $language['dbBackup'],
                 $language['ban'],
                 $language['liftBan'],
+                $language['generate'],
             ]);
             $this->line($option);
             switch ($option) {
@@ -177,7 +192,7 @@ class ExtendCommand extends Command
                         ['ip', 'mac', 'user'],
                         0
                     );
-                    switch ($banType){
+                    switch ($banType) {
                         case 'ip':
                             $ip = $this->ask($language['banIp']);
                             $time = $this->ask($language['banTime']);
@@ -201,8 +216,8 @@ class ExtendCommand extends Command
                         ['ip', 'mac', 'user'],
                         0
                     );
-                    $value='ip';
-                    switch ($banType){
+                    $value = 'ip';
+                    switch ($banType) {
                         case 'ip':
                             $value = $this->ask($language['liftBanIp']);
                             break;
@@ -214,6 +229,29 @@ class ExtendCommand extends Command
                             break;
                     }
                     Ban::liftBan($value, $banType);
+                    break;
+                case $language['generate']:
+                    $generateType = $this->choice(
+                        $language['generate'],
+                        ['Dingtalk', 'Wechat', 'WechatTemplateMessageNotification'],
+                        0
+                    );
+                    switch ($generateType) {
+                        case 'Dingtalk':
+                            $this->output->title($language['generate_dingtalk']);
+                            Artisan::call("generate Dingtalk");
+                            break;
+                        case 'Wechat':
+                            $this->output->title($language['generate_wechat']);
+                            Artisan::call("generate Wechat");
+                            break;
+                        case 'WechatTemplateMessageNotification':
+                            $this->output->title($language['generate_wechatTemplateMessage']);
+                            Artisan::call("generate WechatTemplateMessage");
+                            break;
+                    }
+
+                    break;
 
                 default:
                     $message = $language['choose'];

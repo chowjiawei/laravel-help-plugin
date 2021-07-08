@@ -6,7 +6,7 @@ use Chowjiawei\Helpers\Channels\WechatRobotChannel;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 
-class BusinessDayNotification extends Notification
+class WechatNotification extends Notification
 {
     use Queueable;
 
