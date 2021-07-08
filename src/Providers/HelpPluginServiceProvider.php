@@ -2,6 +2,7 @@
 
 namespace Chowjiawei\Helpers\Providers;
 
+use Chowjiawei\Helpers\Console\Commands\GenerateCommand;
 use Chowjiawei\Helpers\Facade\Helper;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +15,7 @@ class HelpPluginServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton('Chowjiawei.generate', function ($app) {
-            return new MakeServices($app['files']);
+            return new GenerateCommand($app['files']);
         });
         $this->commands('Chowjiawei.generate');
     }
