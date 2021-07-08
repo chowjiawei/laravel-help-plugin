@@ -12,6 +12,11 @@ class HelpPluginServiceProvider extends ServiceProvider
         $this->app->bind('Helper', function () {
             return new Helper();
         });
+
+        $this->app->singleton('Chowjiawei.generate', function ($app) {
+            return new MakeServices($app['files']);
+        });
+        $this->commands('Chowjiawei.generate');
     }
 
     public function boot()
