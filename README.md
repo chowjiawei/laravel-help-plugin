@@ -1,6 +1,8 @@
 ###  v1.1.7是不带封禁功能稳定版本，若您不想使用封禁功能，推荐使用此版本
 
-文档：https://learnku.com/docs/laravel-help-plugin/1.2.6
+本包将持续更新！
+
+详细文档：https://learnku.com/docs/laravel-help-plugin/1.2.6
 
 
 # Laravel辅助工具包
