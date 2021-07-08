@@ -1,6 +1,6 @@
 <?php
 
-namespace Chowjiawei\Helpers\Commands;
+namespace App\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
