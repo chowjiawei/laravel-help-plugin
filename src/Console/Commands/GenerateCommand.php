@@ -176,6 +176,7 @@ class GenerateCommand extends GeneratorCommand
     {
         $nameArr = explode('/', $name);
         $nameCount = count($nameArr);
+        $path='';
         if ($type == 'controller') {
             $path = self::CONTROLLER_PATH;
         }

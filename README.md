@@ -4,7 +4,7 @@
 
 详细文档：https://learnku.com/docs/laravel-help-plugin/1.2.8
 
-以下文档现已放弃更改，与以上文档链接可能产生出入
+
 
 
 # Laravel辅助工具包
