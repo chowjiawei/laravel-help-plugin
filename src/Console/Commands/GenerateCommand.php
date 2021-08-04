@@ -50,12 +50,6 @@ class GenerateCommand extends GeneratorCommand
 
     const CONTROLLER_PATH = self::BASE_PATH . 'Http/Controllers';
 
-    /**
-     * Author: WangSx
-     * DateTime: 2019-11-28 13:07
-     * @return bool
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     */
     public function handle()
     {
         $name = strtolower($this->argument('name'));
