@@ -35,7 +35,7 @@ class HelpPluginServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../Config/helpers.php' => config_path('helpers.php'),
-            __DIR__ . '/../Config/pinyin.php' => config_path('pinyin.php'),
+            __DIR__ . '/../Config/helpers-pinyin.php' => config_path('helpers-pinyin.php'),
 //            __DIR__ . '/../Console/Commands/BackupDatabaseCommand.php' => app_path('Console/Commands/BackupDatabaseCommand.php'),
             __DIR__ . '/../Middleware/Ban.php' => app_path('Http/Middleware/Ban.php'),
             __DIR__ . '/../Models/Ban.php' => app_path('Models/Ban.php'),

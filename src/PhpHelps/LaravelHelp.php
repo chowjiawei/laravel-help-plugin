@@ -61,7 +61,7 @@ class LaravelHelp
 
     public function changeWord($text)
     {
-        $words=config('pinyin');
+        $words=config('helpers-pinyin');
         $chinesePinYins=array_keys($words);
         $wPinYins=array_values($words);
         $wWord='';
