@@ -80,6 +80,21 @@ class LaravelHelp
         return false;
     }
 
+    public function changeLongWord($text)
+    {
+        try {
+            $texts=explode(' ',$text);
+            $result=[];
+            foreach ($texts as $t){
+                $result[]=$this->changeWord($t);
+            }
+            return implode(' ',$result);
+        }catch (\Exception $exception){
+            throw new \Exception('Pinyin is connected with spaces');
+        }
+
+    }
+
     public function getLongItem($array) {
         $index = 0;
         foreach ($array as $k => $v) {
