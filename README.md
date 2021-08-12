@@ -520,5 +520,49 @@ if (config('helpers.ban.ip_ban_enable')) {
   - [微信模板消息Notification模板生成](#generateWechat)
   - [模型生成](#generateModel)
   - [控制器生成](#generateController)
-  
+
+
+单汉语拼音转威妥码拼音
+
+```
+Helper::changeHWWord("zhou");
+```
+
+
+![汉语拼音转威妥码拼音](https://cdn.learnku.com/uploads/images/202108/12/61195/k6coQ5Xauj.png!large)
+
+
+
+长句汉语拼音转威妥码拼音
+
+```
+Helper::changeHWWord("zhou jia wei hao shuai");
+```
+
+
+![汉语拼音转威妥码拼音](https://cdn.learnku.com/uploads/images/202108/12/61195/byi6DgH8Cr.png!large)
+
+单汉语拼音转威妥码拼音
+
+```
+Helper::changeWHWord("chou");
+```
+
+
+
+![威妥码拼音转汉语拼音](https://cdn.learnku.com/uploads/images/202108/12/61195/q8qUU64Liw.png!large)
+
+
+
+
+长句汉语拼音转威妥码拼音
+
+```
+Helper::changeWHWord("chou chia wei hao shuai a");
+```
+
+
+![威妥码拼音转汉语拼音](https://cdn.learnku.com/uploads/images/202108/12/61195/C9RmfgpHpN.png!large)
+
+
 待完善
