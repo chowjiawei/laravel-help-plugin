@@ -59,7 +59,7 @@ class LaravelHelp
     }
 
 
-    public function changeWord($text)
+    public function changeHWWord($text)
     {
         $words=config('helpers-pinyin');
         $chinesePinYins=array_keys($words);
@@ -80,7 +80,7 @@ class LaravelHelp
         return false;
     }
 
-    public function changeLongWord($text)
+    public function changeLongHWWord($text)
     {
         try {
             $texts=explode(' ',$text);
