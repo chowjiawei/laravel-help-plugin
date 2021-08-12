@@ -61,7 +61,7 @@ class LaravelHelp
 
     public function changeHWWord($text)
     {
-        $words=config('helpers-pinyin');
+        $words=config('helpers-pinyin')['hw'];
         $chinesePinYins=array_keys($words);
         $wPinYins=array_values($words);
         $wWord='';
@@ -80,13 +80,50 @@ class LaravelHelp
         return false;
     }
 
+    public function changeWHWord($text)
+    {
+        $words=config('helpers-pinyin')['wh'];
+        $chinesePinYins=array_keys($words);
+        $wPinYins=array_values($words);
+        $wWord='';
+        $allIns=[];
+        foreach ($chinesePinYins as $chinesePinYin){
+            if(stripos($text,$chinesePinYin)!==false){
+                $allIns[]=$chinesePinYin;
+            }
+        }
+        if(!empty($allIns)){
+            $longWord=$this->getLongItem($allIns);
+            $wWord=$wWord.$words[$longWord];
+            $newText = substr($text, mb_strlen($longWord));
+            return $wWord;
+        }
+        return false;
+    }
+
+    public function changeLongWHWord($text)
+    {
+        try {
+            $texts=explode(' ',$text);
+            $result=[];
+            foreach ($texts as $t){
+                $result[]=$this->changeWHWord($t);
+            }
+            return implode(' ',$result);
+        }catch (\Exception $exception){
+            throw new \Exception('Pinyin is connected with spaces');
+        }
+
+    }
+
+
     public function changeLongHWWord($text)
     {
         try {
             $texts=explode(' ',$text);
             $result=[];
             foreach ($texts as $t){
-                $result[]=$this->changeWord($t);
+                $result[]=$this->changeHWWord($t);
             }
             return implode(' ',$result);
         }catch (\Exception $exception){

@@ -1,777 +1,1167 @@
 <?php
 
 return [
-    "a"=> "a",
+    "hw"=>[
+        "a"=> "a",
 
-    "ai" => "ai",
+        "ai" => "ai",
 
-    "an" => "an",
+        "an" => "an",
 
-    "ang" => "ang",
+        "ang" => "ang",
 
-    "ao" => "ao",
+        "ao" => "ao",
 
-    "ba" => "pa",
+        "ba" => "pa",
 
-    "bai" => "pai",
+        "bai" => "pai",
 
-    "ban" => "pan",
+        "ban" => "pan",
 
-    "bang" => "pang",
+        "bang" => "pang",
 
-    "bao" => "pao",
+        "bao" => "pao",
 
-    "bei" => "pei",
+        "bei" => "pei",
 
-    "ben" => "pen",
+        "ben" => "pen",
 
-    "beng" => "peng",
+        "beng" => "peng",
 
-    "bi" => "pi",
+        "bi" => "pi",
 
-    "bian" => "pien",
+        "bian" => "pien",
 
-    "biao" => "piao",
+        "biao" => "piao",
 
-    "bie" => "pieh",
+        "bie" => "pieh",
 
-    "bin" => "pin",
+        "bin" => "pin",
 
-    "bing" => "ping",
+        "bing" => "ping",
 
-    "bo" => "po",
+        "bo" => "po",
 
-    "bu" => "pu",
+        "bu" => "pu",
 
-    "ca" => "ts'a",
+        "ca" => "ts'a",
 
-    "cai" => "ts'ai",
+        "cai" => "ts'ai",
 
-    "can" => "ts'an",
+        "can" => "ts'an",
 
-    "cang" => "ts'ang",
+        "cang" => "ts'ang",
 
-    "cao" => "ts'ao",
+        "cao" => "ts'ao",
 
-    "ce" => "ts'e",
+        "ce" => "ts'e",
 
-    "cen" => "ts'en",
+        "cen" => "ts'en",
 
-    "ceng" => "ts'eng",
+        "ceng" => "ts'eng",
 
-    "cha" => "ch'a",
+        "cha" => "ch'a",
 
-    "chai" => "ch'ai",
+        "chai" => "ch'ai",
 
-    "chan" => "ch'an",
+        "chan" => "ch'an",
 
-    "chang" => "ch'ang",
+        "chang" => "ch'ang",
 
-    "chao" => "ch'ao",
+        "chao" => "ch'ao",
 
-    "che" => "ch'e",
+        "che" => "ch'e",
 
-    "chen" => "ch'en",
+        "chen" => "ch'en",
 
-    "cheng" => "ch'eng",
+        "cheng" => "ch'eng",
 
-    "chi" => "ch'ih",
+        "chi" => "ch'ih",
 
-    "chong" => "ch'ung",
+        "chong" => "ch'ung",
 
-    "chou" => "ch'ou",
+        "chou" => "ch'ou",
 
-    "chu" => "ch'u",
+        "chu" => "ch'u",
 
-    "chuai" => "ch'uai",
+        "chuai" => "ch'uai",
 
-    "chuan" => "ch'uan",
+        "chuan" => "ch'uan",
 
-    "chuang" => "ch'uang",
+        "chuang" => "ch'uang",
 
-    "chui" => "ch'ui",
+        "chui" => "ch'ui",
 
-    "chun" => "ch'un",
+        "chun" => "ch'un",
 
-    "chuo" => "ch'o",
+        "chuo" => "ch'o",
 
-    "ci" => "tz'u",
+        "ci" => "tz'u",
 
-    "cong" => "ts'ung",
+        "cong" => "ts'ung",
 
-    "cou" => "ts'ou",
+        "cou" => "ts'ou",
 
-    "cu" => "ts'u",
+        "cu" => "ts'u",
 
-    "cuan" => "ts'uan",
+        "cuan" => "ts'uan",
 
-    "cui" => "ts'ui",
+        "cui" => "ts'ui",
 
-    "cun" => "ts'un",
+        "cun" => "ts'un",
 
-    "cuo" => "ts'o",
+        "cuo" => "ts'o",
 
-    "da" => "ta",
+        "da" => "ta",
 
-    "dai" => "tai",
+        "dai" => "tai",
 
-    "dan" => "tan",
+        "dan" => "tan",
 
-    "dang" => "tang",
+        "dang" => "tang",
 
-    "dao" => "tao",
+        "dao" => "tao",
 
-    "de" => "te",
+        "de" => "te",
 
-    "deng" => "teng",
+        "deng" => "teng",
 
-    "di" => "ti",
+        "di" => "ti",
 
-    "dian" => "tien",
+        "dian" => "tien",
 
-    "diao" => "tiao",
+        "diao" => "tiao",
 
-    "die" => "tieh",
+        "die" => "tieh",
 
-    "ding" => "ting",
+        "ding" => "ting",
 
-    "diu" => "tiu",
+        "diu" => "tiu",
 
-    "dong" => "tung",
+        "dong" => "tung",
 
-    "dou" => "tou",
+        "dou" => "tou",
 
-    "du" => "tu",
+        "du" => "tu",
 
-    "duan" => "tuan",
+        "duan" => "tuan",
 
-    "dui" => "tui",
+        "dui" => "tui",
 
-    "dun" => "tun",
+        "dun" => "tun",
 
-    "duo" => "to",
+        "duo" => "to",
 
-    "e" => "o",
+        "e" => "o",
 
-    "en" => "en",
+        "en" => "en",
 
-    "er" => "erh",
+        "er" => "erh",
 
-    "fa" => "fa",
+        "fa" => "fa",
 
-    "fan" => "fan",
+        "fan" => "fan",
 
-    "fang" => "fang",
+        "fang" => "fang",
 
-    "fei" => "fei",
+        "fei" => "fei",
 
-    "fen" => "fen",
+        "fen" => "fen",
 
-    "feng" => "feng",
+        "feng" => "feng",
 
-    "fo" => "fo",
+        "fo" => "fo",
 
-    "fou" => "fou",
+        "fou" => "fou",
 
-    "fu" => "fu",
+        "fu" => "fu",
 
-    "ga" => "ka",
+        "ga" => "ka",
 
-    "gai" => "kai",
+        "gai" => "kai",
 
-    "gan" => "kan",
+        "gan" => "kan",
 
-    "gang" => "kang",
+        "gang" => "kang",
 
-    "gao" => "kao",
+        "gao" => "kao",
 
-    "ge" => "ko",
+        "ge" => "ko",
 
-    "gen" => "ken",
+        "gen" => "ken",
 
-    "geng" => "keng",
+        "geng" => "keng",
 
-    "gong" => "kung",
+        "gong" => "kung",
 
-    "gou" => "kou",
+        "gou" => "kou",
 
-    "gu" => "ku",
+        "gu" => "ku",
 
-    "gua" => "kua",
+        "gua" => "kua",
 
-    "guai" => "kuai",
+        "guai" => "kuai",
 
-    "guan" => "kuan",
+        "guan" => "kuan",
 
-    "guang" => "kuang",
+        "guang" => "kuang",
 
-    "gui" => "kuei",
+        "gui" => "kuei",
 
-    "gun" => "kun",
+        "gun" => "kun",
 
-    "guo" => "kuo",
+        "guo" => "kuo",
 
-    "ha" => "ha",
+        "ha" => "ha",
 
-    "hai" => "hai",
+        "hai" => "hai",
 
-    "han" => "han",
+        "han" => "han",
 
-    "hang" => "hang",
+        "hang" => "hang",
 
-    "hao" => "hao",
+        "hao" => "hao",
 
-    "he" => "ho",
+        "he" => "ho",
 
-    "hei" => "hei",
+        "hei" => "hei",
 
-    "hen" => "hen",
+        "hen" => "hen",
 
-    "heng" => "heng",
+        "heng" => "heng",
 
-    "hong" => "hung",
+        "hong" => "hung",
 
-    "hou" => "hou",
+        "hou" => "hou",
 
-    "hu" => "hu",
+        "hu" => "hu",
 
-    "hua" => "hua",
+        "hua" => "hua",
 
-    "huai" => "huai",
+        "huai" => "huai",
 
-    "huan" => "huan",
+        "huan" => "huan",
 
-    "huang" => "huang",
+        "huang" => "huang",
 
-    "hui" => "hui",
+        "hui" => "hui",
 
-    "hun" => "hun",
+        "hun" => "hun",
 
-    "huo" => "huo",
+        "huo" => "huo",
 
-    "ji" => "chi",
+        "ji" => "chi",
 
-    "jia" => "chia",
+        "jia" => "chia",
 
-    "jian" => "chien",
+        "jian" => "chien",
 
-    "jiang" => "chiang",
+        "jiang" => "chiang",
 
-    "jiao" => "chiao",
+        "jiao" => "chiao",
 
-    "jie" => "chieh",
+        "jie" => "chieh",
 
-    "jin" => "chin",
+        "jin" => "chin",
 
-    "jing" => "ching",
+        "jing" => "ching",
 
-    "jiong" => "chiung",
+        "jiong" => "chiung",
 
-    "jiu" => "chiu",
+        "jiu" => "chiu",
 
-    "ju" => "chü",
+        "ju" => "chü",
 
-    "juan" => "chüan",
+        "juan" => "chüan",
 
-    "jue" => "chüeh",
+        "jue" => "chüeh",
 
-    "jun" => "chün",
+        "jun" => "chün",
 
-    "ka" => "k'a",
+        "ka" => "k'a",
 
-    "kai" => "k'ai",
+        "kai" => "k'ai",
 
-    "kan" => "k'an",
+        "kan" => "k'an",
 
-    "kang" => "k'ang",
+        "kang" => "k'ang",
 
-    "kao" => "k'ao",
+        "kao" => "k'ao",
 
-    "ke" => "k'o",
+        "ke" => "k'o",
 
-    "ken" => "k'en",
+        "ken" => "k'en",
 
-    "keng" => "k'eng",
+        "keng" => "k'eng",
 
-    "kong" => "k'ung",
+        "kong" => "k'ung",
 
-    "kou" => "k'ou",
+        "kou" => "k'ou",
 
-    "ku" => "k'u",
+        "ku" => "k'u",
 
-    "kua" => "k'ua",
+        "kua" => "k'ua",
 
-    "kuai" => "k'uai",
+        "kuai" => "k'uai",
 
-    "kuan" =>"k'uan",
+        "kuan" =>"k'uan",
 
-    "kuang" => "k'uang",
+        "kuang" => "k'uang",
 
-    "kui" => "k'uei",
+        "kui" => "k'uei",
 
-    "kun" => "k'un",
+        "kun" => "k'un",
 
-    "kuo" => "k'uo",
+        "kuo" => "k'uo",
 
-    "lü" => "lü",
+        "lü" => "lü",
 
-    "la" => "la",
+        "la" => "la",
 
-    "lai" => "lai",
+        "lai" => "lai",
 
-    "lan" => "lan",
+        "lan" => "lan",
 
-    "lang" => "lang",
+        "lang" => "lang",
 
-    "lao" => "lao",
+        "lao" => "lao",
 
-    "le" => "le",
+        "le" => "le",
 
-    "lei" => "lei",
+        "lei" => "lei",
 
-    "leng" => "leng",
+        "leng" => "leng",
 
-    "li" => "li",
+        "li" => "li",
 
-    "lian" => "lien",
+        "lian" => "lien",
 
-    "liang" => "liang",
+        "liang" => "liang",
 
-    "liao" => "liao",
+        "liao" => "liao",
 
-    "lie" => "lieh",
+        "lie" => "lieh",
 
-    "lin" => "lin",
+        "lin" => "lin",
 
-    "ling" => "ling",
+        "ling" => "ling",
 
-    "liu" => "liu",
+        "liu" => "liu",
 
-    "long" => "lung",
+        "long" => "lung",
 
-    "lou" => "lou",
+        "lou" => "lou",
 
-    "lu" => "lu",
+        "lu" => "lu",
 
-    "luan" => "luan",
+        "luan" => "luan",
 
 //    "luan" => "lüan",
 
-    "lue" => "lüeh",
+        "lue" => "lüeh",
 
-    "lun" => "lun",
+        "lun" => "lun",
 
-    "luo" => "lo",
+        "luo" => "lo",
 
-    "ma" => "ma",
+        "ma" => "ma",
 
-    "mai" => "mai",
+        "mai" => "mai",
 
-    "man" => "man",
+        "man" => "man",
 
-    "mang" => "mang",
+        "mang" => "mang",
 
-    "mao" => "mao",
+        "mao" => "mao",
 
-    "mei" => "mei",
+        "mei" => "mei",
 
-    "men" => "men",
+        "men" => "men",
 
-    "meng" => "meng",
+        "meng" => "meng",
 
-    "mi" => "mi",
+        "mi" => "mi",
 
-    "mian" => "mien",
+        "mian" => "mien",
 
-    "miao" => "miao",
+        "miao" => "miao",
 
-    "mie" => "mieh",
+        "mie" => "mieh",
 
-    "min" => "min",
+        "min" => "min",
 
-    "ming" => "ming",
+        "ming" => "ming",
 
-    "miu" => "miu",
+        "miu" => "miu",
 
-    "mo" => "mo",
+        "mo" => "mo",
 
-    "mou" => "mou",
+        "mou" => "mou",
 
-    "mu" => "mu",
+        "mu" => "mu",
 
-    "nü" => "nü",
+        "nü" => "nü",
 
-    "na" => "na",
+        "na" => "na",
 
-    "nai" => "nai",
+        "nai" => "nai",
 
-    "nan" => "nan",
+        "nan" => "nan",
 
-    "nang" => "nang",
+        "nang" => "nang",
 
-    "nao" => "nao",
+        "nao" => "nao",
 
-    "nei" => "nei",
+        "nei" => "nei",
 
-    "nen" => "nen",
+        "nen" => "nen",
 
-    "neng" => "neng",
+        "neng" => "neng",
 
-    "ni" => "ni",
+        "ni" => "ni",
 
-    "nian" => "nien",
+        "nian" => "nien",
 
-    "niang" => "niang",
+        "niang" => "niang",
 
-    "niao" => "niao",
+        "niao" => "niao",
 
-    "nie" => "nieh",
+        "nie" => "nieh",
 
-    "nin" => "nin",
+        "nin" => "nin",
 
-    "ning" => "ning",
+        "ning" => "ning",
 
-    "niu" => "niu",
+        "niu" => "niu",
 
-    "nong" => "nung",
+        "nong" => "nung",
 
-    "nou" => "nou",
+        "nou" => "nou",
 
-    "nu" => "nu",
+        "nu" => "nu",
 
-    "nuan" => "nuan",
+        "nuan" => "nuan",
 
-    "nue" => "nüeh",
+        "nue" => "nüeh",
 
-    "nuo" => "no",
+        "nuo" => "no",
 
-    "ou" => "ou",
+        "ou" => "ou",
 
-    "pa" => "p'a",
+        "pa" => "p'a",
 
-    "pai" => "p'ai",
+        "pai" => "p'ai",
 
-    "pan" => "p'an",
+        "pan" => "p'an",
 
-    "pang" => "p'ang",
+        "pang" => "p'ang",
 
-    "pao" => "p'ao",
+        "pao" => "p'ao",
 
-    "pei" => "p'ei",
+        "pei" => "p'ei",
 
-    "pen" => "p'en",
+        "pen" => "p'en",
 
-    "peng" => "p'eng",
+        "peng" => "p'eng",
 
-    "pi" => "p'i",
+        "pi" => "p'i",
 
-    "pian" => "p'ien",
+        "pian" => "p'ien",
 
-    "piao" => "p'iao",
+        "piao" => "p'iao",
 
-    "pie" => "p'ieh",
+        "pie" => "p'ieh",
 
-    "pin" => "p'in",
+        "pin" => "p'in",
 
-    "ping" => "p'ing",
+        "ping" => "p'ing",
 
-    "po" => "p'o",
+        "po" => "p'o",
 
-    "pou" => "p'ou",
+        "pou" => "p'ou",
 
-    "pu" => "p'u",
+        "pu" => "p'u",
 
-    "qi" => "ch'i",
+        "qi" => "ch'i",
 
-    "qia" => "ch'ia",
+        "qia" => "ch'ia",
 
-    "qian" => "ch'ien",
+        "qian" => "ch'ien",
 
-    "qiang" => "ch'iang",
+        "qiang" => "ch'iang",
 
-    "qiao" => "ch'iao",
+        "qiao" => "ch'iao",
 
-    "qie" => "ch'ieh",
+        "qie" => "ch'ieh",
 
-    "qin" => "ch'in",
+        "qin" => "ch'in",
 
-    "qing" => "ch'ing",
+        "qing" => "ch'ing",
 
-    "qiong" => "ch'iung",
+        "qiong" => "ch'iung",
 
-    "qiu" => "ch'iu",
+        "qiu" => "ch'iu",
 
-    "qu" => "ch'ü",
+        "qu" => "ch'ü",
 
-    "quan" => "ch'üan",
+        "quan" => "ch'üan",
 
-    "que" => "ch'üeh",
+        "que" => "ch'üeh",
 
-    "qun" => "ch'ün",
+        "qun" => "ch'ün",
 
-    "ran" => "jan",
+        "ran" => "jan",
 
-    "rang" => "jang",
+        "rang" => "jang",
 
-    "rao" => "jao",
+        "rao" => "jao",
 
-    "re" => "je",
+        "re" => "je",
 
-    "ren" => "jen",
+        "ren" => "jen",
 
-    "reng" => "jeng",
+        "reng" => "jeng",
 
-    "ri" => "jih",
+        "ri" => "jih",
 
-    "rong" => "jung",
+        "rong" => "jung",
 
-    "rou" => "jou",
+        "rou" => "jou",
 
-    "ru" => "ju",
+        "ru" => "ju",
 
-    "ruan" => "juan",
+        "ruan" => "juan",
 
-    "rui" => "jui",
+        "rui" => "jui",
 
-    "run" => "jun",
+        "run" => "jun",
 
-    "ruo" => "jo",
+        "ruo" => "jo",
 
-    "sa" => "sa",
+        "sa" => "sa",
 
-    "sai" => "sai",
+        "sai" => "sai",
 
-    "san" => "san",
+        "san" => "san",
 
-    "sang" => "sang",
+        "sang" => "sang",
 
-    "sao" => "sao",
+        "sao" => "sao",
 
-    "se" => "se",
+        "se" => "se",
 
-    "sen" => "sen",
+        "sen" => "sen",
 
-    "seng" => "seng",
+        "seng" => "seng",
 
-    "sha" => "sha",
+        "sha" => "sha",
 
-    "shai" => "shai",
+        "shai" => "shai",
 
-    "shan" => "shan",
+        "shan" => "shan",
 
-    "shang" => "shang",
+        "shang" => "shang",
 
-    "shao" => "shao",
+        "shao" => "shao",
 
-    "she" => "she",
+        "she" => "she",
 
-    "shen" => "shen",
+        "shen" => "shen",
 
-    "sheng" => "sheng",
+        "sheng" => "sheng",
 
-    "shi" => "shih",
+        "shi" => "shih",
 
-    "shou" => "shou",
+        "shou" => "shou",
 
-    "shu" => "shu",
+        "shu" => "shu",
 
-    "shua" => "shua",
+        "shua" => "shua",
 
-    "shuai" => "shuai",
+        "shuai" => "shuai",
 
-    "shuan" => "shuan",
+        "shuan" => "shuan",
 
-    "shuang" => "shuang",
+        "shuang" => "shuang",
 
-    "shui" => "shui",
+        "shui" => "shui",
 
-    "shun" => "shun",
+        "shun" => "shun",
 
-    "shuo" => "shuo",
+        "shuo" => "shuo",
 
-    "si" => "ssu",
+        "si" => "ssu",
 
-    "song" => "sung",
+        "song" => "sung",
 
-    "sou" => "sou",
+        "sou" => "sou",
 
-    "su" => "su",
+        "su" => "su",
 
-    "suan" => "suan",
+        "suan" => "suan",
 
-    "sui" => "sui",
+        "sui" => "sui",
 
-    "sun" => "sun",
+        "sun" => "sun",
 
-    "suo" => "so",
+        "suo" => "so",
 
-    "ta" => "t'a",
+        "ta" => "t'a",
 
-    "tai" => "t'ai",
+        "tai" => "t'ai",
 
-    "tan" => "t'an",
+        "tan" => "t'an",
 
-    "tang" => "t'ang",
+        "tang" => "t'ang",
 
-    "tao" => "t'ao",
+        "tao" => "t'ao",
 
-    "te" => "t'e",
+        "te" => "t'e",
 
-    "teng" => "t'eng",
+        "teng" => "t'eng",
 
-    "ti" => "t'i",
+        "ti" => "t'i",
 
-    "tian" => "t'ien",
+        "tian" => "t'ien",
 
-    "tiao" => "t'iao",
+        "tiao" => "t'iao",
 
-    "tie" => "t'ieh",
+        "tie" => "t'ieh",
 
-    "ting" => "t'ing",
+        "ting" => "t'ing",
 
-    "tong" => "t'ung",
+        "tong" => "t'ung",
 
-    "tou" => "t'ou",
+        "tou" => "t'ou",
 
-    "tu" => "t'u",
+        "tu" => "t'u",
 
-    "tuan" => "t'uan",
+        "tuan" => "t'uan",
 
-    "tui" => "t'ui",
+        "tui" => "t'ui",
 
-    "tun" => "t'un",
+        "tun" => "t'un",
 
-    "tuo" => "t'o",
+        "tuo" => "t'o",
 
-    "wa" => "wa",
+        "wa" => "wa",
 
-    "wai" => "wai",
+        "wai" => "wai",
 
-    "wan" => "wan",
+        "wan" => "wan",
 
-    "wang" => "wang",
+        "wang" => "wang",
 
-    "wei" => "wei",
+        "wei" => "wei",
 
-    "wen" => "wen",
+        "wen" => "wen",
 
-    "weng" => "weng",
+        "weng" => "weng",
 
-    "wo" => "wo",
+        "wo" => "wo",
 
-    "wu" => "wu",
+        "wu" => "wu",
 
-    "xi" => "hsi",
+        "xi" => "hsi",
 
-    "xia" => "hsia",
+        "xia" => "hsia",
 
-    "xian" => "hsien",
+        "xian" => "hsien",
 
-    "xiang" => "hsiang",
+        "xiang" => "hsiang",
 
-    "xiao" => "hsiao",
+        "xiao" => "hsiao",
 
-    "xie" => "hsieh",
+        "xie" => "hsieh",
 
-    "xin" => "hsin",
+        "xin" => "hsin",
 
-    "xing" => "hsing",
+        "xing" => "hsing",
 
-    "xiong" => "hsiung",
+        "xiong" => "hsiung",
 
-    "xiu" => "hsiu",
+        "xiu" => "hsiu",
 
-    "xu" => "hsü",
+        "xu" => "hsü",
 
-    "xuan" => "hsüan",
+        "xuan" => "hsüan",
 
-    "xue" => "hsüeh",
+        "xue" => "hsüeh",
 
-    "xun" => "hsün",
+        "xun" => "hsün",
 
-    "ya" => "ya",
+        "ya" => "ya",
 
-    "yai" => "yai",
+        "yai" => "yai",
 
-    "yan" => "yen",
+        "yan" => "yen",
 
-    "yang" => "yang",
+        "yang" => "yang",
 
-    "yao" => "yao",
+        "yao" => "yao",
 
-    "ye" => "yeh",
+        "ye" => "yeh",
 
-    "yi" => "i",
+        "yi" => "i",
 
-    "yin" => "yin",
+        "yin" => "yin",
 
-    "ying" => "ying",
+        "ying" => "ying",
 
-    "yo" => "yo",
+        "yo" => "yo",
 
-    "yong" => "yung",
+        "yong" => "yung",
 
-    "you" => "yu",
+        "you" => "yu",
 
-    "yu" => "yü",
+        "yu" => "yü",
 
-    "yuan" => "yüen",
+        "yuan" => "yüen",
 
-    "yue" => "yüeh",
+        "yue" => "yüeh",
 
-    "yun" => "yün",
+        "yun" => "yün",
 
-    "za" => "tsa",
+        "za" => "tsa",
 
-    "zai" => "tsai",
+        "zai" => "tsai",
 
-    "zan" => "tsan",
+        "zan" => "tsan",
 
-    "zang" => "tsang",
+        "zang" => "tsang",
 
-    "zao" => "tsao",
+        "zao" => "tsao",
 
-    "ze" => "tse",
+        "ze" => "tse",
 
-    "zei" => "tsei",
+        "zei" => "tsei",
 
-    "zen" => "tsen",
+        "zen" => "tsen",
 
-    "zeng" => "tseng",
+        "zeng" => "tseng",
 
-    "zha" => "cha",
+        "zha" => "cha",
 
-    "zhai" => "chai",
+        "zhai" => "chai",
 
-    "zhan" => "chan",
+        "zhan" => "chan",
 
-    "zhang" => "chang",
+        "zhang" => "chang",
 
-    "zhao" => "chao",
+        "zhao" => "chao",
 
-    "zhe" => "che",
+        "zhe" => "che",
 
-    "zhen" => "chen",
+        "zhen" => "chen",
 
-    "zheng" => "cheng",
+        "zheng" => "cheng",
 
-    "zhi" => "chih",
+        "zhi" => "chih",
 
-    "zhong" => "chung",
+        "zhong" => "chung",
 
-    "zhou" => "chou",
+        "zhou" => "chou",
 
-    "zhu" => "chu",
+        "zhu" => "chu",
 
-    "zhua" => "chua",
+        "zhua" => "chua",
 
-    "zhuai" => "chuai",
+        "zhuai" => "chuai",
 
-    "zhuan" => "chuan",
+        "zhuan" => "chuan",
 
-    "zhuang" => "chuang",
+        "zhuang" => "chuang",
 
-    "zhui" => "chui",
+        "zhui" => "chui",
 
-    "zhun" => "chun",
+        "zhun" => "chun",
+    ],
+    "wh"=>[
+        "a" => "a",
+        "ai" => "ai",
+        "an" => "an",
+        "ang" => "ang",
+        "ao" => "ao",
+        "pa" => "ba",
+        "pai" => "bai",
+        "pan" => "ban",
+        "pang" => "bang",
+        "pao" => "bao",
+        "pei" => "bei",
+        "pen" => "ben",
+        "peng" => "beng",
+        "pi" => "bi",
+        "pien" => "bian",
+        "piao" => "biao",
+        "pieh" => "bie",
+        "pin" => "bin",
+        "ping" => "bing",
+        "po" => "bo",
+        "pu" => "bu",
+        "ts'a" => "ca",
+        "ts'ai" => "cai",
+        "ts'an" => "can",
+        "ts'ang" => "cang",
+        "ts'ao" => "cao",
+        "ts'e" => "ce",
+        "ts'en" => "cen",
+        "ts'eng" => "ceng",
+        "ch'a" => "cha",
+        "ch'ai" => "chai",
+        "ch'an" => "chan",
+        "ch'ang" => "chang",
+        "ch'ao" => "chao",
+        "ch'e" => "che",
+        "ch'en" => "chen",
+        "ch'eng" => "cheng",
+        "ch'ih" => "chi",
+        "ch'ung" => "chong",
+        "ch'ou" => "chou",
+        "ch'u" => "chu",
+        "ch'uai" => "chuai",
+        "ch'uan" => "chuan",
+        "ch'uang" => "chuang",
+        "ch'ui" => "chui",
+        "ch'un" => "chun",
+        "ch'o" => "chuo",
+        "tz'u" => "ci",
+        "ts'ung" => "cong",
+        "ts'ou" => "cou",
+        "ts'u" => "cu",
+        "ts'uan" => "cuan",
+        "ts'ui" => "cui",
+        "ts'un" => "cun",
+        "ts'o" => "cuo",
+        "ta" => "da",
+        "tai" => "dai",
+        "tan" => "dan",
+        "tang" => "dang",
+        "tao" => "dao",
+        "te" => "de",
+        "teng" => "deng",
+        "ti" => "di",
+        "tien" => "dian",
+        "tiao" => "diao",
+        "tieh" => "die",
+        "ting" => "ding",
+        "tiu" => "diu",
+        "tung" => "dong",
+        "tou" => "dou",
+        "tu" => "du",
+        "tuan" => "duan",
+        "tui" => "dui",
+        "tun" => "dun",
+        "to" => "duo",
+        "o" => "e",
+        "en" => "en",
+        "erh" => "er",
+        "fa" => "fa",
+        "fan" => "fan",
+        "fang" => "fang",
+        "fei" => "fei",
+        "fen" => "fen",
+        "feng" => "feng",
+        "fo" => "fo",
+        "fou" => "fou",
+        "fu" => "fu",
+        "ka" => "ga",
+        "kai" => "gai",
+        "kan" => "gan",
+        "kang" => "gang",
+        "kao" => "gao",
+        "ko" => "ge",
+        "ken" => "gen",
+        "keng" => "geng",
+        "kung" => "gong",
+        "kou" => "gou",
+        "ku" => "gu",
+        "kua" => "gua",
+        "kuai" => "guai",
+        "kuan" => "guan",
+        "kuang" => "guang",
+        "kuei" => "gui",
+        "kun" => "gun",
+        "kuo" => "guo",
+        "ha" => "ha",
+        "hai" => "hai",
+        "han" => "han",
+        "hang" => "hang",
+        "hao" => "hao",
+        "ho" => "he",
+        "hei" => "hei",
+        "hen" => "hen",
+        "heng" => "heng",
+        "hung" => "hong",
+        "hou" => "hou",
+        "hu" => "hu",
+        "hua" => "hua",
+        "huai" => "huai",
+        "huan" => "huan",
+        "huang" => "huang",
+        "hui" => "hui",
+        "hun" => "hun",
+        "huo" => "huo",
+        "chi" => "ji",
+        "chia" => "jia",
+        "chien" => "jian",
+        "chiang" => "jiang",
+        "chiao" => "jiao",
+        "chieh" => "jie",
+        "chin" => "jin",
+        "ching" => "jing",
+        "chiung" => "jiong",
+        "chiu" => "jiu",
+        "chü" => "ju",
+        "chüan" => "juan",
+        "chüeh" => "jue",
+        "chün" => "jun",
+        "k'a" => "ka",
+        "k'ai" => "kai",
+        "k'an" => "kan",
+        "k'ang" => "kang",
+        "k'ao" => "kao",
+        "k'o" => "ke",
+        "k'en" => "ken",
+        "k'eng" => "keng",
+        "k'ung" => "kong",
+        "k'ou" => "kou",
+        "k'u" => "ku",
+        "k'ua" => "kua",
+        "k'uai" => "kuai",
+        "k'uan" => "kuan",
+        "k'uang" => "kuang",
+        "k'uei" => "kui",
+        "k'un" => "kun",
+        "k'uo" => "kuo",
+        "lü" => "lü",
+        "la" => "la",
+        "lai" => "lai",
+        "lan" => "lan",
+        "lang" => "lang",
+        "lao" => "lao",
+        "le" => "le",
+        "lei" => "lei",
+        "leng" => "leng",
+        "li" => "li",
+        "lien" => "lian",
+        "liang" => "liang",
+        "liao" => "liao",
+        "lieh" => "lie",
+        "lin" => "lin",
+        "ling" => "ling",
+        "liu" => "liu",
+        "lung" => "long",
+        "lou" => "lou",
+        "lu" => "lu",
+        "luan" => "luan",
+        "lüeh" => "lue",
+        "lun" => "lun",
+        "lo" => "luo",
+        "ma" => "ma",
+        "mai" => "mai",
+        "man" => "man",
+        "mang" => "mang",
+        "mao" => "mao",
+        "mei" => "mei",
+        "men" => "men",
+        "meng" => "meng",
+        "mi" => "mi",
+        "mien" => "mian",
+        "miao" => "miao",
+        "mieh" => "mie",
+        "min" => "min",
+        "ming" => "ming",
+        "miu" => "miu",
+        "mo" => "mo",
+        "mou" => "mou",
+        "mu" => "mu",
+        "nü" => "nü",
+        "na" => "na",
+        "nai" => "nai",
+        "nan" => "nan",
+        "nang" => "nang",
+        "nao" => "nao",
+        "nei" => "nei",
+        "nen" => "nen",
+        "neng" => "neng",
+        "ni" => "ni",
+        "nien" => "nian",
+        "niang" => "niang",
+        "niao" => "niao",
+        "nieh" => "nie",
+        "nin" => "nin",
+        "ning" => "ning",
+        "niu" => "niu",
+        "nung" => "nong",
+        "nou" => "nou",
+        "nu" => "nu",
+        "nuan" => "nuan",
+        "nüeh" => "nue",
+        "no" => "nuo",
+        "ou" => "ou",
+        "p'a" => "pa",
+        "p'ai" => "pai",
+        "p'an" => "pan",
+        "p'ang" => "pang",
+        "p'ao" => "pao",
+        "p'ei" => "pei",
+        "p'en" => "pen",
+        "p'eng" => "peng",
+        "p'i" => "pi",
+        "p'ien" => "pian",
+        "p'iao" => "piao",
+        "p'ieh" => "pie",
+        "p'in" => "pin",
+        "p'ing" => "ping",
+        "p'o" => "po",
+        "p'ou" => "pou",
+        "p'u" => "pu",
+        "ch'i" => "qi",
+        "ch'ia" => "qia",
+        "ch'ien" => "qian",
+        "ch'iang" => "qiang",
+        "ch'iao" => "qiao",
+        "ch'ieh" => "qie",
+        "ch'in" => "qin",
+        "ch'ing" => "qing",
+        "ch'iung" => "qiong",
+        "ch'iu" => "qiu",
+        "ch'ü" => "qu",
+        "ch'üan" => "quan",
+        "ch'üeh" => "que",
+        "ch'ün" => "qun",
+        "jan" => "ran",
+        "jang" => "rang",
+        "jao" => "rao",
+        "je" => "re",
+        "jen" => "ren",
+        "jeng" => "reng",
+        "jih" => "ri",
+        "jung" => "rong",
+        "jou" => "rou",
+        "ju" => "ru",
+        "juan" => "ruan",
+        "jui" => "rui",
+        "jun" => "run",
+        "jo" => "ruo",
+        "sa" => "sa",
+        "sai" => "sai",
+        "san" => "san",
+        "sang" => "sang",
+        "sao" => "sao",
+        "se" => "se",
+        "sen" => "sen",
+        "seng" => "seng",
+        "sha" => "sha",
+        "shai" => "shai",
+        "shan" => "shan",
+        "shang" => "shang",
+        "shao" => "shao",
+        "she" => "she",
+        "shen" => "shen",
+        "sheng" => "sheng",
+        "shih" => "shi",
+        "shou" => "shou",
+        "shu" => "shu",
+        "shua" => "shua",
+        "shuai" => "shuai",
+        "shuan" => "shuan",
+        "shuang" => "shuang",
+        "shui" => "shui",
+        "shun" => "shun",
+        "shuo" => "shuo",
+        "ssu" => "si",
+        "sung" => "song",
+        "sou" => "sou",
+        "su" => "su",
+        "suan" => "suan",
+        "sui" => "sui",
+        "sun" => "sun",
+        "so" => "suo",
+        "t'a" => "ta",
+        "t'ai" => "tai",
+        "t'an" => "tan",
+        "t'ang" => "tang",
+        "t'ao" => "tao",
+        "t'e" => "te",
+        "t'eng" => "teng",
+        "t'i" => "ti",
+        "t'ien" => "tian",
+        "t'iao" => "tiao",
+        "t'ieh" => "tie",
+        "t'ing" => "ting",
+        "t'ung" => "tong",
+        "t'ou" => "tou",
+        "t'u" => "tu",
+        "t'uan" => "tuan",
+        "t'ui" => "tui",
+        "t'un" => "tun",
+        "t'o" => "tuo",
+        "wa" => "wa",
+        "wai" => "wai",
+        "wan" => "wan",
+        "wang" => "wang",
+        "wei" => "wei",
+        "wen" => "wen",
+        "weng" => "weng",
+        "wo" => "wo",
+        "wu" => "wu",
+        "hsi" => "xi",
+        "hsia" => "xia",
+        "hsien" => "xian",
+        "hsiang" => "xiang",
+        "hsiao" => "xiao",
+        "hsieh" => "xie",
+        "hsin" => "xin",
+        "hsing" => "xing",
+        "hsiung" => "xiong",
+        "hsiu" => "xiu",
+        "hsü" => "xu",
+        "hsüan" => "xuan",
+        "hsüeh" => "xue",
+        "hsün" => "xun",
+        "ya" => "ya",
+        "yai" => "yai",
+        "yen" => "yan",
+        "yang" => "yang",
+        "yao" => "yao",
+        "yeh" => "ye",
+        "i" => "yi",
+        "yin" => "yin",
+        "ying" => "ying",
+        "yo" => "yo",
+        "yung" => "yong",
+        "yu" => "you",
+        "yü" => "yu",
+        "yüen" => "yuan",
+        "yüeh" => "yue",
+        "yün" => "yun",
+        "tsa" => "za",
+        "tsai" => "zai",
+        "tsan" => "zan",
+        "tsang" => "zang",
+        "tsao" => "zao",
+        "tse" => "ze",
+        "tsei" => "zei",
+        "tsen" => "zen",
+        "tseng" => "zeng",
+        "cha" => "zha",
+        "chai" => "zhai",
+        "chan" => "zhan",
+        "chang" => "zhang",
+        "chao" => "zhao",
+        "che" => "zhe",
+        "chen" => "zhen",
+        "cheng" => "zheng",
+        "chih" => "zhi",
+        "chung" => "zhong",
+        "chou" => "zhou",
+        "chu" => "zhu",
+        "chua" => "zhua",
+        "chuai" => "zhuai",
+        "chuan" => "zhuan",
+        "chuang" => "zhuang",
+        "chui" => "zhui",
+        "chun" => "zhun"
+    ]
 ];
