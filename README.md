@@ -1,8 +1,8 @@
 ###  v1.1.7是不带封禁功能稳定版本，若您不想使用封禁功能，推荐使用此版本
+###  v1.3.0是威妥码和汉语拼音互转的稳定版本，推荐使用此版本
+本包将持续更新！以下文档更新可能不及时，请详细文档查看
 
-本包将持续更新！
-
-详细文档：https://learnku.com/docs/laravel-help-plugin/1.2.8
+详细文档：https://learnku.com/docs/laravel-help-plugin/1.3.0
 
 
 # Laravel辅助工具包
@@ -43,7 +43,7 @@
     - [微信模板消息Notification模板生成](#generateWechat)
   - [模型生成](#generateModel)
   - [控制器生成](#generateController)
-
+- [威妥码互转汉语拼音-移步详细文档查看](#e)
 <a name="composer"></a>
 # 安装说明
 
@@ -322,9 +322,11 @@ $help->getCountryName('China');
 ```
 
 or
+还有更多可以下载包后体验哦
 
 ```
 Helper::allCountry();
+
 ```
 <a name="openexchangerates"></a>
 # Openexchangerates汇率实时获取
@@ -334,7 +336,7 @@ use Chowjiawei\Helpers\Exchange\Exchange;
 //获取实时汇率
 $help->getChangerates();
 ```
-将为您返回完整的汇率及接口信息
+将为您返回完整的汇率及接口信息，以下省略篇幅
 ```
 {
   "disclaimer": "Usage subject to terms: https://openexchangerates.org/terms",
@@ -521,6 +523,7 @@ if (config('helpers.ban.ip_ban_enable')) {
   - [模型生成](#generateModel)
   - [控制器生成](#generateController)
 
+## 详情请移步详细文档
 
 单汉语拼音转威妥码拼音
 
