@@ -14,9 +14,9 @@
     "require": {
         "php": "^7.0|^8.0",
         "guzzlehttp/guzzle": "^6.3",
-        "laravel/framework": "~6.0|~7.0|~8.0",
-        "overtrue/laravel-wechat":"~5.0",
-        "torann/geoip": "^1"
+        "laravel/framework": "^6.0|^7.0|^8.0",
+        "overtrue/laravel-wechat":"^5.0|^6.0",
+        "torann/geoip": "^2"
     },
     "autoload": {
         "psr-4": {
