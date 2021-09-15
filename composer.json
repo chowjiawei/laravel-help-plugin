@@ -16,7 +16,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^6.0|^7.0|^8.0",
         "overtrue/laravel-wechat":"^5.0|^6.0",
-        "torann/geoip": "^2"
+        "torann/geoip": "^3"
     },
     "autoload": {
         "psr-4": {
