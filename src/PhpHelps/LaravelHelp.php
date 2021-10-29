@@ -3,13 +3,15 @@
 namespace Chowjiawei\Helpers\PhpHelps;
 
 
+use Illuminate\Support\Facades\DB;
+
 class LaravelHelp
 {
     public $country;
 
     public function __construct()
     {
-        $this->country=config('helpers.country');
+        $this->country = config('helpers.country');
     }
 
 
@@ -61,19 +63,19 @@ class LaravelHelp
 
     public function changeHWWord($text)
     {
-        $words=config('helpers-pinyin')['hw'];
-        $chinesePinYins=array_keys($words);
-        $wPinYins=array_values($words);
-        $wWord='';
-        $allIns=[];
-        foreach ($chinesePinYins as $chinesePinYin){
-            if(stripos($text,$chinesePinYin)!==false){
-                $allIns[]=$chinesePinYin;
+        $words = config('helpers-pinyin')['hw'];
+        $chinesePinYins = array_keys($words);
+        $wPinYins = array_values($words);
+        $wWord = '';
+        $allIns = [];
+        foreach ($chinesePinYins as $chinesePinYin) {
+            if (stripos($text, $chinesePinYin) !== false) {
+                $allIns[] = $chinesePinYin;
             }
         }
-        if(!empty($allIns)){
-            $longWord=$this->getLongItem($allIns);
-            $wWord=$wWord.$words[$longWord];
+        if (!empty($allIns)) {
+            $longWord = $this->getLongItem($allIns);
+            $wWord = $wWord . $words[$longWord];
             $newText = substr($text, mb_strlen($longWord));
             return $wWord;
         }
@@ -82,19 +84,19 @@ class LaravelHelp
 
     public function changeWHWord($text)
     {
-        $words=config('helpers-pinyin')['wh'];
-        $chinesePinYins=array_keys($words);
-        $wPinYins=array_values($words);
-        $wWord='';
-        $allIns=[];
-        foreach ($chinesePinYins as $chinesePinYin){
-            if(stripos($text,$chinesePinYin)!==false){
-                $allIns[]=$chinesePinYin;
+        $words = config('helpers-pinyin')['wh'];
+        $chinesePinYins = array_keys($words);
+        $wPinYins = array_values($words);
+        $wWord = '';
+        $allIns = [];
+        foreach ($chinesePinYins as $chinesePinYin) {
+            if (stripos($text, $chinesePinYin) !== false) {
+                $allIns[] = $chinesePinYin;
             }
         }
-        if(!empty($allIns)){
-            $longWord=$this->getLongItem($allIns);
-            $wWord=$wWord.$words[$longWord];
+        if (!empty($allIns)) {
+            $longWord = $this->getLongItem($allIns);
+            $wWord = $wWord . $words[$longWord];
             $newText = substr($text, mb_strlen($longWord));
             return $wWord;
         }
@@ -104,13 +106,13 @@ class LaravelHelp
     public function changeLongWHWord($text)
     {
         try {
-            $texts=explode(' ',$text);
-            $result=[];
-            foreach ($texts as $t){
-                $result[]=$this->changeWHWord($t);
+            $texts = explode(' ', $text);
+            $result = [];
+            foreach ($texts as $t) {
+                $result[] = $this->changeWHWord($t);
             }
-            return implode(' ',$result);
-        }catch (\Exception $exception){
+            return implode(' ', $result);
+        } catch (\Exception $exception) {
             throw new \Exception('Pinyin is connected with spaces');
         }
 
@@ -120,19 +122,20 @@ class LaravelHelp
     public function changeLongHWWord($text)
     {
         try {
-            $texts=explode(' ',$text);
-            $result=[];
-            foreach ($texts as $t){
-                $result[]=$this->changeHWWord($t);
+            $texts = explode(' ', $text);
+            $result = [];
+            foreach ($texts as $t) {
+                $result[] = $this->changeHWWord($t);
             }
-            return implode(' ',$result);
-        }catch (\Exception $exception){
+            return implode(' ', $result);
+        } catch (\Exception $exception) {
             throw new \Exception('Pinyin is connected with spaces');
         }
 
     }
 
-    public function getLongItem($array) {
+    public function getLongItem($array)
+    {
         $index = 0;
         foreach ($array as $k => $v) {
             if (strlen($array[$index]) < strlen($v))
@@ -140,4 +143,46 @@ class LaravelHelp
         }
         return $array[$index];
     }
+    
+    public function getLatestDataModel($model, $noDuplicateId, $needColumn, $timeColumn, $returnColumn = null)
+    {
+        if (!$returnColumn) {
+            $returnColumn = $needColumn;
+        }
+        $tableName = $model->getTable();
+        $subQuery = $model::query()
+            ->selectRaw("SUBSTRING_INDEX( group_concat( $noDuplicateId ORDER BY $timeColumn DESC ), ',', 1 ) AS $noDuplicateId")
+            ->from("$tableName as t2")
+            ->groupBy($needColumn)
+            ->getQuery();
+
+        return $model::query()
+            ->from("$tableName as t1")
+            ->joinSub($subQuery, 't2', "t1.$noDuplicateId", '=', "t2.$noDuplicateId")
+            ->pluck($returnColumn)->toArray();
+    }
+
+    public function getLatestData($tableName, $noDuplicateId, $needColumn, $timeColumn, $connection = null, $returnColumn = null)
+    {
+        if (!$returnColumn) {
+            $returnColumn = $needColumn;
+        }
+        if ($connection) {
+            $data = DB::connection($connection)->select("SELECT
+    $returnColumn
+FROM
+    $tableName t1
+    INNER JOIN ( SELECT SUBSTRING_INDEX( group_concat( $noDuplicateId ORDER BY $timeColumn DESC ), ',', 1 ) AS $noDuplicateId FROM $tableName t2 GROUP BY $needColumn ) t2 ON t1.$noDuplicateId = t2.$noDuplicateId
+");
+        } else {
+            $data = DB::select("SELECT
+    *
+FROM
+    $tableName t1
+    INNER JOIN ( SELECT SUBSTRING_INDEX( group_concat( $noDuplicateId ORDER BY $timeColumn DESC ), ',', 1 ) AS $noDuplicateId FROM $tableName t2 GROUP BY $needColumn ) t2 ON t1.$noDuplicateId = t2.$noDuplicateId
+");
+        }
+        return array_column($data, $returnColumn);
+    }
+
 }
