@@ -143,7 +143,7 @@ class LaravelHelp
         }
         return $array[$index];
     }
-    
+
     public function getLatestDataModel($model, $noDuplicateId, $needColumn, $timeColumn, $returnColumn = null)
     {
         if (!$returnColumn) {
