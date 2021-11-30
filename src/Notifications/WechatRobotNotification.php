@@ -12,10 +12,13 @@ class WechatRobotNotification extends Notification
     use Queueable;
 
     public $message;
+    public $inUser;
 
-    public function __construct($message)
+    public function __construct($message, bool $inUser = false)
     {
         $this->message = $message;
+
+        $this->inUser = $inUser;
     }
 
     public function via($notifiable)
@@ -26,5 +29,9 @@ class WechatRobotNotification extends Notification
     public function toWechatRobot($notifiable)
     {
         return $this->message;
+    }
+    public function toWechatRobotUser($notifiable)
+    {
+        return $this->inUser;
     }
 }

@@ -18,15 +18,24 @@ class WechatRobotChannel
     public function send($notifiable, Notification $notification)
     {
         $message = $notification->toWechatRobot($notifiable);
-        $keys = $notifiable->routes['wechat_robot'];
-        $data = array("msgtype" => "markdown", "markdown" => [
-            "content" => $message,
-        ]);
+        $inUser = $notification->toWechatRobotUser($notifiable);
+        $key=$notifiable->routes['wechat_robot'];
+        if (!$inUser) {
+            $data=array("msgtype"=>"markdown", "markdown"=> [
+                "content"=> $message,
+            ]);
+        }
+        if ($inUser) {
+            $data=array("msgtype"=>"text", "text"=> [
+                "content"=> $message,
+                "mentioned_list"=>["@all"],
+            ]);
+        }
         $client = new Client();
-        $keys = is_array($keys) ? $keys : array($keys);
-        foreach ($keys as $key) {
-            $url = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=' . $key;
-            $response = $client->post($url, [\GuzzleHttp\RequestOptions::JSON => $data]);
+        $key=is_array($key)?$key:array($key);
+        foreach ($key as $keys) {
+            $url='https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key='.$keys;
+            $client->post($url, [\GuzzleHttp\RequestOptions::JSON => $data ]);
         }
     }
 }

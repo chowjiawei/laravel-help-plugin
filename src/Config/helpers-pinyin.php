@@ -1,8 +1,8 @@
 <?php
 
 return [
-    "hw"=>[
-        "a"=> "a",
+    "hw" => [
+        "a" => "a",
 
         "ai" => "ai",
 
@@ -304,7 +304,7 @@ return [
 
         "kuai" => "k'uai",
 
-        "kuan" =>"k'uan",
+        "kuan" => "k'uan",
 
         "kuang" => "k'uang",
 
@@ -776,7 +776,7 @@ return [
 
         "zhun" => "chun",
     ],
-    "wh"=>[
+    "wh" => [
         "a" => "a",
         "ai" => "ai",
         "an" => "an",
