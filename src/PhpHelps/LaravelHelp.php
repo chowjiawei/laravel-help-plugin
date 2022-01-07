@@ -144,45 +144,5 @@ class LaravelHelp
         return $array[$index];
     }
 
-    public function getLatestDataModel($model, $noDuplicateId, $needColumn, $timeColumn, $returnColumn = null)
-    {
-        if (!$returnColumn) {
-            $returnColumn = $needColumn;
-        }
-        $tableName = $model->getTable();
-        $subQuery = $model::query()
-            ->selectRaw("SUBSTRING_INDEX( group_concat( $noDuplicateId ORDER BY $timeColumn DESC ), ',', 1 ) AS $noDuplicateId")
-            ->from("$tableName as t2")
-            ->groupBy($needColumn)
-            ->getQuery();
-
-        return $model::query()
-            ->from("$tableName as t1")
-            ->joinSub($subQuery, 't2', "t1.$noDuplicateId", '=', "t2.$noDuplicateId")
-            ->pluck($returnColumn)->toArray();
-    }
-
-    public function getLatestData($tableName, $noDuplicateId, $needColumn, $timeColumn, $connection = null, $returnColumn = null)
-    {
-        if (!$returnColumn) {
-            $returnColumn = $needColumn;
-        }
-        if ($connection) {
-            $data = DB::connection($connection)->select("SELECT
-    $returnColumn
-FROM
-    $tableName t1
-    INNER JOIN ( SELECT SUBSTRING_INDEX( group_concat( $noDuplicateId ORDER BY $timeColumn DESC ), ',', 1 ) AS $noDuplicateId FROM $tableName t2 GROUP BY $needColumn ) t2 ON t1.$noDuplicateId = t2.$noDuplicateId
-");
-        } else {
-            $data = DB::select("SELECT
-    *
-FROM
-    $tableName t1
-    INNER JOIN ( SELECT SUBSTRING_INDEX( group_concat( $noDuplicateId ORDER BY $timeColumn DESC ), ',', 1 ) AS $noDuplicateId FROM $tableName t2 GROUP BY $needColumn ) t2 ON t1.$noDuplicateId = t2.$noDuplicateId
-");
-        }
-        return array_column($data, $returnColumn);
-    }
 
 }

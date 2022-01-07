@@ -1,5 +1,6 @@
 ###  v1.1.7是不带封禁功能稳定版本，若您不想使用封禁功能，推荐使用此版本
 ###  v1.3.0是威妥码和汉语拼音互转的稳定版本，推荐使用此版本
+###  v1.4.0是抛弃其他功能的版本，将会专注 通知类别 汇率互转 城市中英互转及威妥码拼音的更新
 本包将持续更新！以下文档更新可能不及时，请详细文档查看
 
 详细文档：https://learnku.com/docs/laravel-help-plugin/1.3.0
@@ -30,12 +31,6 @@
      - [Artisan命令示例](#artisan)
 - [国家获取转换](#country)
 - [Openexchangerates汇率实时获取](#openexchangerates)
-- [网站封禁](#ban)
-  - [ip封禁](#banip)
-  - [mac地址封禁](#banmac)
-  - [用户封禁](#banuser)
-  - [封禁记录](#banlog)
-  - [解除封禁](#banlift)
 - [扩展Artisan命令](#extend)
   - [代码生成器](#generate)
     - [钉钉Notification模板生成](#generateDingtalk)
@@ -385,115 +380,6 @@ $help->getSymbolChangerates(['GBP','EUR','AED','CAD']);
 ```
 
 
-<a name="ban"></a>
-# 网站封禁功能
-
-在 `app\Http\Kernel.php`文件内 添加封禁配置
-
-```
-    protected $middleware = [
-        \App\Http\Middleware\Ban::class
-    ];
-```
-
-修改`helper`配置文件内的 `ban` 配置的`enable`选项：`true`开启，`false`关闭(默认)
-
-您可以配置自定义需要的异常，在`exception_type`选项配置，`exception_message`配置您显示给用户的消息
-
-您可以选择全部开启，或者开启部分功能
-```php
-
-"ban" => [
-        "enable" => false, //Enable Ban
-        "user_model" => \App\Models\User::class,   //eg:"user_model" => \App\Models\User::class, //Ban user model
-        "user_model_primary_key_id" => 'id',  //Ban user model primary_key_id
-        "user_id_ban_enable" => false, //Enable user Ban
-        "ip_ban_enable" => false, //Enable user ip
-        "mac_ban_enable" => false, //Enable user mac
-        "exception_type" => 'ErrorException', //Ban exception type
-        "exception_message" => 'Your device or account is blocked', //Ban exception message
-    ]
-
-```
-
-<a name="banip"></a>
-## ip封禁
-
-修改`helper`配置文件内的 `ban` 配置的`ip_ban_enable`选项：`true`开启，`false`关闭(默认)
-
-
-<a name="banmac"></a>
-## mac地址封禁
-修改`helper`配置文件内的 `ban` 配置的`mac_ban_enable`选项：`true`开启，`false`关闭(默认)
-
-
-<a name="banuser"></a>
-## 用户封禁
- - 修改`helper`配置文件内的 `ban`  配置的`user_id_ban_enable`选项：`true`开启，`false`关闭(默认)
- - 配置的`user_model`选项：更改为您要封禁的用户模型，`user_model_primary_key_id`更改为您用户模型的主键
-
-
-<a name="banlog"></a>
-## 封禁记录
-我们为你内置了一个 `Ban` 模型 ，您可以在模型内添加您所需要的功能，但是不允许删除模型内的原有配置，以免其他地方出现问题
-
-![img.png](readme/images/img.png)
-
-在您要实现封禁的业务逻辑中，使用 
-
-`Ban::ipBan('199.199.199.199', \Carbon\Carbon::now())` 记录下此ip地址   
-  ### ip地址如何获取？
-  我们为您内置了geoip2包，您可以使用
-  ```
-  $ip = last(request()->getClientIps());
-  $info = geoip($ip)->toArray();
-  $info['ip']即为客户端IP地址
-  ```
-
-`Ban::macBan('24-4B-99-02-75-C3', \Carbon\Carbon::now())` 记录下mac地址
-  ### mac地址如何获取？
-  您可以使用以下语句获取mac地址
-  ```
-  待完善
-  ```
-  
-
-`Ban::userBan('7666', \Carbon\Carbon::now())` 记录下此用户id
-  ### userid如何获取？
-  用户id为您用户模型的主键id
-
-
-
-### 我们为您提供了个自由更改的例子
-
-以下例子将对10秒内连续访问10次的ip进行封禁，并通知到钉钉机器人
-
-```
-if (config('helpers.ban.ip_ban_enable')) {
-                //ban ip
-                $ip = last(request()->getClientIps());
-                $info = geoip($ip)->toArray();
-                $cacheIp=Cache::get($info['ip'])?Cache::get($info['ip']):0;
-
-                Cache::put($info['ip'],$cacheIp+1,10);
-                
-                if(Cache::get($info['ip'])==10){
-                    \App\Models\Ban::ipBan($info['ip'],'2021-07-01');
-                    Notification::route('dingtalk_robot', config('helpers.dingtalk'))
-                        ->notify(new DingtalkRobotNotification($info['ip'].'连续高频访问Api,考虑恶意攻击，系统自动封禁该ip一日', "通知"));
-                }
-                $findBanUser = \App\Models\Ban::where('ip', $info['ip'])->where('ban_deleted','>', Carbon::now())->first();
-                if ($findBanUser) {
-                    return response()->view('helpers.errors', ['exception' => $message], 302);
-                }
-            }
-```
-
-
-<a name="banlift"></a>
-## 解除封禁
-
-`Ban::liftBan('199.199.199.199', 'ip')` 解除对该ip的封禁，支持`ip` `mac` `user`
 
 
 <a name="extend"></a>
@@ -505,9 +391,6 @@ if (config('helpers.ban.ip_ban_enable')) {
 ```php artisan extend  ```英文
 
   - 创建Rest规范控制器
-  - 备份数据库
-  - 命令封禁
-  - 命令解封
 
 ![img_3.png](readme/images/img_3.png)
 

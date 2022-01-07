@@ -81,57 +81,7 @@ class ExtendCommand extends Command
                     Artisan::call("make:controller $controllerName --resource");
                     $message = $language['dbResultAlert'] . $controllerName;
                     break;
-                case $language['dbBackup']:
-                    $this->output->title($language['dbAlert']);
-                    Artisan::call("down");
-                    $this->callSilent("db:backup");
-                    Artisan::call("up");
-                    $message = $language['dbResult'];
-                    break;
-                case $language['ban']:
-                    $banType = $this->choice(
-                        $language['banType'],
-                        ['ip', 'mac', 'user'],
-                        0
-                    );
-                    switch ($banType) {
-                        case 'ip':
-                            $ip = $this->ask($language['banIp']);
-                            $time = $this->ask($language['banTime']);
-                            Ban::ipBan($ip, $time);
-                            break;
-                        case 'mac':
-                            $mac = $this->ask($language['banMac']);
-                            $time = $this->ask($language['banTime']);
-                            Ban::macBan($mac, $time);
-                            break;
-                        case 'user':
-                            $userid = $this->ask($language['banUser']);
-                            $time = $this->ask($language['banTime']);
-                            Ban::userBan($userid, $time);
-                            break;
-                    }
-                    break;
-                case $language['liftBan']:
-                    $banType = $this->choice(
-                        $language['liftBanType'],
-                        ['ip', 'mac', 'user'],
-                        0
-                    );
-                    $value = 'ip';
-                    switch ($banType) {
-                        case 'ip':
-                            $value = $this->ask($language['liftBanIp']);
-                            break;
-                        case 'mac':
-                            $value = $this->ask($language['liftBanMac']);
-                            break;
-                        case 'user':
-                            $value = $this->ask($language['liftBanUser']);
-                            break;
-                    }
-                    Ban::liftBan($value, $banType);
-                    break;
+
                 case $language['generate']:
                     $generateType = $this->choice(
                         $language['generate'],
