@@ -452,3 +452,9 @@ Helper::changeWHWord("chou chia wei hao shuai a");
 
 
 待完善
+
+## JetBrains 支持的项目
+
+非常感谢 Jetbrains 为我提供了从事这个和其他开源项目的许可。
+
+[![](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)](https://www.jetbrains.com/?from=https://github.com/overtrue)
