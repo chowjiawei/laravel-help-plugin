@@ -1,9 +1,14 @@
-###  v1.1.7是不带封禁功能稳定版本，若您不想使用封禁功能，推荐使用此版本
-###  v1.3.0是威妥码和汉语拼音互转的稳定版本，推荐使用此版本
-###  v1.4.0是抛弃其他功能的版本，将会专注 通知类别 汇率互转 城市中英互转及威妥码拼音的更新
-本包将持续更新！以下文档更新可能不及时，请详细文档查看
+## JetBrains 支持的项目
 
-详细文档：https://learnku.com/docs/laravel-help-plugin/1.3.0
+非常感谢 Jetbrains 为我提供了从事这个和其他开源项目的许可。
+
+[![](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)](https://www.jetbrains.com/?from=https://github.com/overtrue)
+
+- v1.3.0是威妥码和汉语拼音互转的稳定版本，推荐使用此版本
+- v1.4.0以上是抛弃其他功能的版本，将会专注 通知类别 汇率互转 城市中英互转及威妥码拼音的更新 开发中
+- 
+本包将持续更新！但以下文档更新可能不及时，请详细文档查看 https://learnku.com/docs/laravel-help-plugin/1.3.X
+
 
 
 # Laravel辅助工具包
@@ -453,8 +458,3 @@ Helper::changeWHWord("chou chia wei hao shuai a");
 
 待完善
 
-## JetBrains 支持的项目
-
-非常感谢 Jetbrains 为我提供了从事这个和其他开源项目的许可。
-
-[![](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)](https://www.jetbrains.com/?from=https://github.com/overtrue)
