@@ -18,14 +18,14 @@ class WechatRobotChannel
     public function send($notifiable, Notification $notification)
     {
         $message = $notification->toWechatRobot($notifiable);
-        $inUser = $notification->toWechatRobotUser($notifiable);
+        $inUserBroadcast = $notification->toWechatRobotBroadcast($notifiable);
         $key=$notifiable->routes['wechat_robot'];
-        if (!$inUser) {
+        if (!$inUserBroadcast) {
             $data=array("msgtype"=>"markdown", "markdown"=> [
                 "content"=> $message,
             ]);
         }
-        if ($inUser) {
+        if ($inUserBroadcast) {
             $data=array("msgtype"=>"text", "text"=> [
                 "content"=> $message,
                 "mentioned_list"=>["@all"],

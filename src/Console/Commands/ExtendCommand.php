@@ -53,35 +53,18 @@ class ExtendCommand extends Command
      */
     public function handle()
     {
-        $exit = 'no';
         if ($this->option('chinese')) {
             $language = $this->languageChange('chinese');
         } else {
-            $language = $this->languageChange('english');
+            $language = $this->languageChange();
         }
-
 
         do {
             $option = $this->choice($language['choose'], [
-                $language['storeRestController'],
-                $language['dbBackup'],
-                $language['ban'],
-                $language['liftBan'],
                 $language['generate'],
             ]);
             $this->line($option);
             switch ($option) {
-                case $language['storeRestController']:
-                    $controllerName = $this->ask($language['storeRestControllerAlert'] . 'Product  ProductController');
-                    $strLen = strlen($controllerName);
-                    $testLen = strlen('Controller');
-                    if (substr_compare($controllerName, 'Controller', $strLen - $testLen, $testLen) !== 0) {
-                        $controllerName .= 'Controller';
-                    }
-                    Artisan::call("make:controller $controllerName --resource");
-                    $message = $language['dbResultAlert'] . $controllerName;
-                    break;
-
                 case $language['generate']:
                     $generateType = $this->choice(
                         $language['generate'],

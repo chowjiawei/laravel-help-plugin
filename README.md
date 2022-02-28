@@ -1,13 +1,15 @@
-## JetBrains 支持的项目
 
-非常感谢 Jetbrains 为我提供了从事这个和其他开源项目的许可。
+ ### v1.5.0以内版本将不进行维护，并在2022年6月份进行删除，请及时升级
+ ### v1.5.0以上是抛弃其他功能的版本，以后将会专注于 
+  * [x] 通知发送（包括但不限于以下频道【更多待接入】）
+  - * [x]  钉钉机器人
+  - * [x]  企业微信机器人
+  - * [x]  微信模板消息
+* [x] 威妥码拼音互转获取
+* [x] 汇率试试互转获取（Openexchangerates Api）
+* [x] 全球城市中英互转获取 及更新
 
-[![](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)](https://www.jetbrains.com/?from=https://github.com/overtrue)
-
-- v1.3.0是威妥码和汉语拼音互转的稳定版本，推荐使用此版本
-- v1.4.0以上是抛弃其他功能的版本，将会专注 通知类别 汇率互转 城市中英互转及威妥码拼音的更新 开发中
-- 
-本包将持续更新！但以下文档更新可能不及时，请详细文档查看 https://learnku.com/docs/laravel-help-plugin/1.3.X
+本包将持续更新！请详细文档托管 https://learnku.com/docs/laravel-help-plugin
 
 
 
@@ -20,7 +22,7 @@
     <a><img src="https://img.shields.io/badge/laravel-5.5+-59a9f8.svg?style=flat" ></a>
 </p>
 
- #### 支持钉钉机器人 企业微信机器人 微信模板消息/广播 Openexchangerates汇率实时获取的一个工具包
+ #### 目录
 
 - [安装说明](#composer)
 - [发布配置文件](#config)
@@ -41,20 +43,29 @@
     - [钉钉Notification模板生成](#generateDingtalk)
     - [企业微信Notification模板生成](#generateWechat)
     - [微信模板消息Notification模板生成](#generateWechat)
-  - [模型生成](#generateModel)
-  - [控制器生成](#generateController)
-- [威妥码互转汉语拼音-移步详细文档查看](#e)
+- [威妥码互转汉语拼音-移步详细文档查看](#pinyin)
+
+
+## JetBrains 支持的项目
+
+非常感谢 Jetbrains 为我提供了从事这个和其他开源项目的许可。
+
+[![](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)](https://www.jetbrains.com/?from=https://github.com/overtrue)
+
+
+
+
 <a name="composer"></a>
 # 安装说明
 
-环境要求
+环境要求 本包依托于Laravel框架，其他框架暂不适用
 
 - php => ^7.0
 - guzzlehttp/guzzle => ^6.3"
-- laravel/framework => ~5.5|~6.0|~7.0|~8.0,
+- laravel/framework => ~5.5|~6.0|~7.0|~8.0|~9.0
 - overtrue/laravel-wechat => ~5.0
 
-工具包使用composer安装
+使用composer安装
 
 `composer require chowjiawei/laravel-help-plugin`
 
@@ -65,96 +76,16 @@
 
 `php artisan vendor:publish --provider="Chowjiawei\Helpers\Providers\HelpPluginServiceProvider"`
 
-- 如若使用微信模板消息则需要发布easywechat配置:
+- 如若使用微信模板消息则需要发布easywechat配置，本包默认内置easywechat: 
 
 `php artisan vendor:publish --provider="Overtrue\LaravelWeChat\ServiceProvider"`
+微信包的配置  按需填写  公共号配置 `official_account` 配置省略
 
-
-```
-<?php
-
-/*
- * This file is part of the overtrue/laravel-wechat.
- *
- * (c) overtrue <i@overtrue.me>
- *
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
- */
-
-return [
-    /*
-     * 默认配置，将会合并到各模块中
-     */
-    'defaults' => [
-        /*
-         * 指定 API 调用返回结果的类型：array(default)/collection/object/raw/自定义类名
-         */
-        'response_type' => 'array',
-
-        /*
-         * 使用 Laravel 的缓存系统
-         */
-        'use_laravel_cache' => true,
-
-        /*
-         * 日志配置
-         *
-         * level: 日志级别，可选为：
-         *                 debug/info/notice/warning/error/critical/alert/emergency
-         * file：日志文件位置(绝对路径!!!)，要求可写权限
-         */
-        'log' => [
-            'level' => env('WECHAT_LOG_LEVEL', 'debug'),
-            'file' => env('WECHAT_LOG_FILE', storage_path('logs/wechat.log')),
-        ],
-    ],
-
-    /*
-     * 路由配置
-     */
-    'route' => [
-        /*
-         * 开放平台第三方平台路由配置
-         */
-        // 'open_platform' => [
-        //     'uri' => 'serve',
-        //     'action' => Overtrue\LaravelWeChat\Controllers\OpenPlatformController::class,
-        //     'attributes' => [
-        //         'prefix' => 'open-platform',
-        //         'middleware' => null,
-        //     ],
-        // ],
-    ],
-
-    /*
-     * 公众号
-     */
-    'official_account' => [
-        'default' => [
-            'app_id' => env('WECHAT_OFFICIAL_ACCOUNT_APPID', 'your-app-id'),         // AppID
-            'secret' => env('WECHAT_OFFICIAL_ACCOUNT_SECRET', 'your-app-secret'),    // AppSecret
-            'token' => env('WECHAT_OFFICIAL_ACCOUNT_TOKEN', 'your-token'),           // Token
-            'aes_key' => env('WECHAT_OFFICIAL_ACCOUNT_AES_KEY', ''),                 // EncodingAESKey
-
-            /*
-             * OAuth 配置
-             *
-             * scopes：公众平台（snsapi_userinfo / snsapi_base），开放平台：snsapi_login
-             * callback：OAuth授权完成后的回调页地址(如果使用中间件，则随便填写。。。)
-             */
-            // 'oauth' => [
-            //     'scopes'   => array_map('trim', explode(',', env('WECHAT_OFFICIAL_ACCOUNT_OAUTH_SCOPES', 'snsapi_userinfo'))),
-            //     'callback' => env('WECHAT_OFFICIAL_ACCOUNT_OAUTH_CALLBACK', '/examples/oauth_callback.php'),
-            // ],
-        ],
-    ],
-];
-
-```
 
 <a name="facade"></a>
 # 注册facade
+
+本报提供laravel Facade便捷，如需使用可按如下配置
 
 打开`config/app.php`
 
@@ -173,7 +104,6 @@ return [
 
 <a name="channel"></a>
 # 消息驱动
-
 
 - [钉钉机器人](#dingtalk)
 - [企业微信机器人](#wechat)
@@ -206,6 +136,8 @@ public function via($notifiable)
 
 <a name="wechatTemp"></a>
 ## 微信模板消息发送驱动
+
+该驱动支持单用户发送和广播功能
 
 ```
 use Chowjiawei\Helpers\Channels\WechatTemplateMessageChannel;
@@ -243,7 +175,7 @@ Notification::route('Wechat_template_message', $key)->notify(new YourNotificatio
 `use Chowjiawei\Helpers\Notifications\WechatRobotNotification;`
 
 `Notification::route('wechat_robot', env("WECHAT_ROBOT)"))
-->notify(new DingtalkRobotNotification($message));`
+->notify(new WechatRobotNotification($message));`
 
 <a name="usewechatTemp"></a>
 ### 微信模板消息:
@@ -395,23 +327,12 @@ $help->getSymbolChangerates(['GBP','EUR','AED','CAD']);
 
 ```php artisan extend  ```英文
 
-  - 创建Rest规范控制器
-
-![img_3.png](readme/images/img_3.png)
-
-![img_1.png](readme/images/img_1.png)
-
-我们提供了个默认视图，`views/helpers/error.balde.php`,请根据您的页面协调更改样式
-
-
-- [代码生成器](#generate)
   - [钉钉Notification模板生成](#generateDingtalk)
   - [企业微信Notification模板生成](#generateWechat)
   - [微信模板消息Notification模板生成](#generateWechat)
-  - [模型生成](#generateModel)
-  - [控制器生成](#generateController)
 
-## 详情请移步详细文档
+<a name="pinyin"></a>
+## 威妥码拼音
 
 单汉语拼音转威妥码拼音
 
@@ -456,5 +377,4 @@ Helper::changeWHWord("chou chia wei hao shuai a");
 ![威妥码拼音转汉语拼音](https://cdn.learnku.com/uploads/images/202108/12/61195/C9RmfgpHpN.png!large)
 
 
-待完善
 

@@ -2,7 +2,6 @@
 
 namespace Chowjiawei\Helpers\Notifications;
 
-use Carbon\Carbon;
 use Chowjiawei\Helpers\Channels\WechatRobotChannel;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
@@ -12,13 +11,13 @@ class WechatRobotNotification extends Notification
     use Queueable;
 
     public $message;
-    public $inUser;
+    public $isUserBroadcast;
 
-    public function __construct($message, bool $inUser = false)
+    public function __construct($message, bool $isUserBroadcast = false)
     {
         $this->message = $message;
 
-        $this->inUser = $inUser;
+        $this->isUserBroadcast = $isUserBroadcast;
     }
 
     public function via($notifiable)
@@ -30,8 +29,8 @@ class WechatRobotNotification extends Notification
     {
         return $this->message;
     }
-    public function toWechatRobotUser($notifiable)
+    public function toWechatRobotBroadcast($notifiable)
     {
-        return $this->inUser;
+        return $this->isUserBroadcast;
     }
 }
