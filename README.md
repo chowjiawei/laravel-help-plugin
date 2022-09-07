@@ -5,9 +5,10 @@
   - * [x]  钉钉机器人
   - * [x]  企业微信机器人
   - * [x]  微信模板消息
-* [x] 威妥码拼音互转获取
-* [x] 汇率试试互转获取（Openexchangerates Api）
-* [x] 全球城市中英互转获取 及更新
+  - * [x]  飞书机器人
+  * [x] 威妥码拼音互转获取
+  * [x] 汇率试试互转获取（Openexchangerates Api）
+  * [x] 全球城市中英互转获取 及更新
 
 本包将持续更新！请详细文档托管 https://learnku.com/docs/laravel-help-plugin
 
@@ -108,7 +109,7 @@
 - [钉钉机器人](#dingtalk)
 - [企业微信机器人](#wechat)
 - [微信模板消息](#wechatTemp)
-
+- [飞书机器人](#lark)
 
 <a name="dingtalk"></a>
 ## 钉钉机器人消息发送驱动 
@@ -121,6 +122,7 @@ public function via($notifiable)
     return [DingtalkRobotChannel::class];
 }
 ```
+
 
 <a name="wechat"></a>
 ## 微信机器人消息发送驱动
@@ -154,12 +156,26 @@ Notification::route('wechat_robot', $key)->notify(new YourNotification());
 Notification::route('Wechat_template_message', $key)->notify(new YourNotification());
 ```
 
+<a name="lark"></a>
+## 飞书机器人消息发送驱动
+
+```
+use Chowjiawei\Helpers\Channels\DingtalkRobotChannel;
+
+public function via($notifiable)
+{
+    return [DingtalkRobotChannel::class];
+}
+```
+
+
 <a name="usem"></a>
 # 直接消息推送
 
 - [钉钉机器人](#usedingtalk)
 - [企业微信机器人](#usewechat)
 - [微信模板消息](#usewechatTemp)
+- [飞书机器人](#uselark)
 
 <a name="usedingtalk"></a>
 ### 钉钉:
@@ -226,6 +242,15 @@ Notification::route('Wechat_template_message', $key)->notify(new YourNotificatio
         Notification::route('WechatTemplateMessage', $user)->notify(new WechatTemplateMessageNotification($data, $template));
 
 ``` 
+
+<a name="uselark"></a>
+### 飞书:
+
+`use Chowjiawei\Helpers\Notifications\LarkRobotNotification;`
+
+`Notification::route('lark', env("LARK_ROBOT"))
+->notify(new DingtalkRobotNotification($message));`
+
 
 <a name="artisan"></a>
 ### Artisan命令示例:
