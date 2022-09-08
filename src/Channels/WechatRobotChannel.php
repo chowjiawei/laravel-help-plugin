@@ -19,22 +19,22 @@ class WechatRobotChannel
     {
         $message = $notification->toWechatRobot($notifiable);
         $inUserBroadcast = $notification->toWechatRobotBroadcast($notifiable);
-        $key=$notifiable->routes['wechat_robot'];
+        $key = $notifiable->routes['wechat_robot'];
         if (!$inUserBroadcast) {
-            $data=array("msgtype"=>"markdown", "markdown"=> [
-                "content"=> $message,
+            $data = array("msgtype" => "markdown", "markdown" => [
+                "content" => $message,
             ]);
         }
         if ($inUserBroadcast) {
-            $data=array("msgtype"=>"text", "text"=> [
-                "content"=> $message,
-                "mentioned_list"=>["@all"],
+            $data = array("msgtype" => "text", "text" => [
+                "content" => $message,
+                "mentioned_list" => ["@all"],
             ]);
         }
         $client = new Client();
-        $key=is_array($key)?$key:array($key);
+        $key = is_array($key) ? $key : array($key);
         foreach ($key as $keys) {
-            $url='https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key='.$keys;
+            $url = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=' . $keys;
             $client->post($url, [\GuzzleHttp\RequestOptions::JSON => $data ]);
         }
     }

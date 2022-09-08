@@ -18,16 +18,28 @@
         "overtrue/laravel-wechat":"^5.0|^6.0",
         "torann/geoip": "3.0.2"
     },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.6"
+    },
     "autoload": {
         "psr-4": {
             "Chowjiawei\\Helpers\\": "src/"
         }
+    },
+    "scripts": {
+        "lint": "phpcs --standard=PSR1,PSR12,./ruleset.xml --ignore=config/us-zipcode.php app/ routes/ config/ ",
+        "lint-fix": "phpcbf --standard=PSR1,PSR12 --ignore=config/us-zipcode.php  src/ "
     },
     "extra": {
         "laravel": {
             "providers": [
                 "Chowjiawei\\Helpers\\Providers\\HelpPluginServiceProvider"
             ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "easywechat-composer/easywechat-composer": true
         }
     }
 }

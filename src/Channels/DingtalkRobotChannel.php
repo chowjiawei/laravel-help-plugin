@@ -30,8 +30,8 @@ class DingtalkRobotChannel
             ]);
         }
         $client = new Client();
-        if(strstr($keys, ',')){
-            $keys=explode(",", $keys);
+        if (strstr($keys, ',')) {
+            $keys = explode(",", $keys);
             foreach ($keys as $key) {
                 $url = 'https://oapi.dingtalk.com/robot/send?access_token=' . $key;
                 $response = $client->post($url, [\GuzzleHttp\RequestOptions::JSON => $data]);

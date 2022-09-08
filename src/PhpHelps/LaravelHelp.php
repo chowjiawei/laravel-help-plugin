@@ -2,7 +2,6 @@
 
 namespace Chowjiawei\Helpers\PhpHelps;
 
-
 use Illuminate\Support\Facades\DB;
 
 class LaravelHelp
@@ -115,7 +114,6 @@ class LaravelHelp
         } catch (\Exception $exception) {
             throw new \Exception('Pinyin is connected with spaces');
         }
-
     }
 
 
@@ -131,18 +129,16 @@ class LaravelHelp
         } catch (\Exception $exception) {
             throw new \Exception('Pinyin is connected with spaces');
         }
-
     }
 
     public function getLongItem($array)
     {
         $index = 0;
         foreach ($array as $k => $v) {
-            if (strlen($array[$index]) < strlen($v))
+            if (strlen($array[$index]) < strlen($v)) {
                 $index = $k;
+            }
         }
         return $array[$index];
     }
-
-
 }

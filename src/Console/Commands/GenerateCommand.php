@@ -170,7 +170,7 @@ class GenerateCommand extends GeneratorCommand
     {
         $nameArr = explode('/', $name);
         $nameCount = count($nameArr);
-        $path='';
+        $path = '';
         if ($type == 'controller') {
             $path = self::CONTROLLER_PATH;
         }
@@ -179,7 +179,6 @@ class GenerateCommand extends GeneratorCommand
         }
         if ($nameCount > 1) {
             for ($i = 0; $i < $nameCount - 1; $i++) {
-
                 $path .= DIRECTORY_SEPARATOR . ucfirst($nameArr[$i]);
             }
         }
