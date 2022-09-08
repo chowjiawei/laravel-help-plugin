@@ -17,8 +17,7 @@
 # Laravel辅助工具包
 
 <p align="center">
-    <a href="https://packagist.org/packages/chowjiawei/laravel-help-plugin" ><img src="https://poser.pugx.org/chowjiawei/laravel-help-plugin/v/stable" /></a> 
-    <a href="https://packagist.org/packages/chowjiawei/laravel-help-plugin"><img src="https://img.shields.io/packagist/dt/chowjiawei/laravel-help-plugin.svg?color=" /></a> 
+    <a href="https://packagist.org/packages/chowjiawei/laravel-help-plugin" ><img src="https://poser.pugx.org/chowjiawei/laravel-help-plugin/v/stable" /></a>
     <a><img src="https://img.shields.io/badge/php-7.0+-59a9f8.svg?style=flat" /></a> 
     <a><img src="https://img.shields.io/badge/laravel-5.5+-59a9f8.svg?style=flat" ></a>
 </p>
@@ -346,7 +345,7 @@ $help->getSymbolChangerates(['GBP','EUR','AED','CAD']);
 
 <a name="extend"></a>
 # 扩展Artisan命令
-插件被您提供了一个支持中文和英文的扩展命令，您可以用命令呼出，命令提供了以下功能
+插件为您提供了一个支持中文和英文的扩展命令，您可以用命令呼出，命令提供了以下功能
 
 ```php artisan extend --chinese ```中文
 
