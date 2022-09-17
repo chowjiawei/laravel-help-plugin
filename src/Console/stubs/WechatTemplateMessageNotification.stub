@@ -4,7 +4,7 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use App\Channels\WechatTemplateMessageChannel;
+use Chowjiawei\Helpers\Channels\WechatTemplateMessageChannel;
 
 class WechatTemplateMessageNotification extends Notification
 {
