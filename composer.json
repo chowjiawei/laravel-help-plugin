@@ -13,10 +13,10 @@
     ],
     "require": {
         "php": "^7.0|^8.0",
-        "guzzlehttp/guzzle": "^6.3",
+        "guzzlehttp/guzzle": "^6.3|^7.0",
         "laravel/framework": "^6.0|^7.0|^8.0",
         "overtrue/laravel-wechat":"^5.0|^6.0",
-        "torann/geoip": "3.0.2"
+        "torann/geoip": "^3.0.2"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.6"

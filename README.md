@@ -5,12 +5,12 @@
   - * [x]  微信模板消息
   - * [x]  飞书机器人
   * [x] 威妥码拼音互转获取
-  * [x] 汇率试试互转获取（Openexchangerates Api）
+  * [x] 汇率实时互转获取（Openexchangerates Api）
   * [x] 全球城市中英互转获取 及更新
 
 本包将持续更新！请详细文档托管 https://learnku.com/docs/laravel-help-plugin
 
-如发现bug 请直接提issue或者直接提pr，造成的不便请谅解。
+如发现bug  请直接提issue或者直接提pr，造成的不便请谅解。
 
 
 
