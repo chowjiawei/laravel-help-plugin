@@ -495,6 +495,7 @@ return [
             "generateDingtalk" => '生成DinktalkNotification',
             "generateWechat" => '生成WechatNotification',
             "generateWechatTemplateMessage" => '生成WechatTemplateMessageNotification',
+            "generateLarkRobot" => '生成LarkRobotNotification',
             "generate" => '代码生成器',
         ],
         "english" => [
@@ -521,6 +522,7 @@ return [
             "generateDingtalk" => 'Generate DinktalkNotification',
             "generateWechat" => 'Generate WechatNotification',
             "generateWechatTemplateMessage" => 'Generate WechatTemplateMessageNotification',
+            "generateLarkRobot" => 'Generate LarkRobotNotification',
             "generate" => 'Generate Code',
         ],
     ],

@@ -58,17 +58,21 @@ class ExtendCommand extends Command
         } else {
             $language = $this->languageChange();
         }
-
+        if(!$language){
+            $this->info('Please Run  `php artisan vendor:publish --provider="Chowjiawei\Helpers\Providers\HelpPluginServiceProvider" ` ');
+            return;
+        }
         do {
             $option = $this->choice($language['choose'], [
                 $language['generate'],
-            ]);
+            ],0);
+
             $this->line($option);
             switch ($option) {
                 case $language['generate']:
                     $generateType = $this->choice(
                         $language['generate'],
-                        ['Dingtalk', 'Wechat', 'WechatTemplateMessageNotification'],
+                        ['Dingtalk', 'Wechat', 'WechatTemplateMessageNotification','LarkRobot'],
                         0
                     );
 
@@ -85,6 +89,10 @@ class ExtendCommand extends Command
                             $this->output->title($language['generateWechatTemplateMessage']);
                             Artisan::call("generate WechatTemplateMessage");
                             break;
+                        case 'LarkRobot':
+                            $this->output->title($language['generateLarkRobot']);
+                            Artisan::call("generate LarkRobot");
+                            break;
                     }
 
                     break;
@@ -94,7 +102,7 @@ class ExtendCommand extends Command
             }
             $this->info($language['success']);
             $this->output->title($message ?? $language['exit']);
-            $exit = $this->confirm($language['exit']);
+            $exit = $this->confirm($language['exit'],'yes');
         } while ($exit != 'yes');
     }
 }
