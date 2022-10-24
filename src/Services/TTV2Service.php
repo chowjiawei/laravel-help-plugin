@@ -20,6 +20,9 @@ class TTV2Service
             'app_id' => config('helpers.tiktok.client_id'),
             'secret' => config('helpers.tiktok.client_secret'),
             'notify_url' => config('helpers.tiktok.notify_url'),
+            'private_key_url' =>  config('helpers.tiktok.private_key_url'),
+            'platform_public_key_url' => config('helpers.tiktok.platform_public_key_url'),
+            'public_key_url' =>  config('helpers.tiktok.public_key_url'),
         ];
     }
     //查询订单
@@ -187,16 +190,17 @@ class TTV2Service
     }
 
 
+//        $settingData = [
+//            'create_order_callback' => config('app.url') . '/api/general/tt-pay-v2/return-callback',
+//            'refund_callback' => config('app.url') . '/api/general/tt-pay-v2/refund',
+//            'pay_callback' => config('app.url') . '/api/general/tt-pay-v2/return',
+//        ];
 
     //设置回调
     public function settingReturn(array $settingData)
     {
         $config = $this->config;
-//        $order = [
-//            'create_order_callback' => config('app.url') . '/api/general/tt-pay-v2/return-callback',
-//            'refund_callback' => config('app.url') . '/api/general/tt-pay-v2/refund',
-//            'pay_callback' => config('app.url') . '/api/general/tt-pay-v2/return',
-//        ];
+
         $timestamp = Carbon::now()->timestamp;
         $str = substr(md5($timestamp), 5, 15);
         $body = json_encode($settingData);
@@ -294,8 +298,9 @@ class TTV2Service
 
     public function makeSign($method, $url, $body, $timestamp, $nonce_str)
     {
+        $config=$this->config;
         $text = $method . "\n" . $url . "\n" . $timestamp . "\n" . $nonce_str . "\n" . $body . "\n";
-        $priKey = file_get_contents(storage_path() . '/pay/tt/private_key.pem');
+        $priKey = file_get_contents($config['private_key_url']);
         $privateKey = openssl_get_privatekey($priKey, '');
         openssl_sign($text, $sign, $privateKey, OPENSSL_ALGO_SHA256);
         $sign = base64_encode($sign);
@@ -304,8 +309,9 @@ class TTV2Service
 
     public function verify($http_body, $timestamp, $nonce_str, $sign)
     {
+        $config=$this->config;
         $data = $timestamp . "\n" . $nonce_str . "\n" . $http_body . "\n";
-        $publicKey = file_get_contents(storage_path() . '/pay/tt/platform_public_key.pem');
+        $publicKey = file_get_contents($config['platform_public_key_url']);
         if (!$publicKey) {
             return null;
         }

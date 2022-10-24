@@ -511,6 +511,9 @@ return [
         'app_id' => '',
         'secret' => '',
         'notify_url' => '',
+        'private_key_url' => storage_path() . '/pay/tt/private_key.pem',
+        'platform_public_key_url' => storage_path() . '/pay/tt/platform_public_key.pem',
+        'public_key_url' => storage_path() . '/pay/tt/public_key.pem'
     ],
 
 
