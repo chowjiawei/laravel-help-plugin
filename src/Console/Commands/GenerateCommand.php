@@ -53,7 +53,7 @@ class GenerateCommand extends GeneratorCommand
     public function handle()
     {
         $name = strtolower($this->argument('name'));
-        if ($name !== 'dingtalk' && $name !== 'wechat' && $name !== 'wechattemplatemessage' && $name !== 'larkrobot' ) {
+        if ($name !== 'dingtalk' && $name !== 'wechat' && $name !== 'wechattemplatemessage' && $name !== 'larkrobot') {
             $isModel = $this->option('model');
             $isController = $this->option('controller');
             if (!$isModel && !$isController) {

@@ -58,14 +58,14 @@ class ExtendCommand extends Command
         } else {
             $language = $this->languageChange();
         }
-        if(!$language){
+        if (!$language) {
             $this->info('Please Run  `php artisan vendor:publish --provider="Chowjiawei\Helpers\Providers\HelpPluginServiceProvider" ` ');
             return;
         }
         do {
             $option = $this->choice($language['choose'], [
                 $language['generate'],
-            ],0);
+            ], 0);
 
             $this->line($option);
             switch ($option) {
@@ -102,7 +102,7 @@ class ExtendCommand extends Command
             }
             $this->info($language['success']);
             $this->output->title($message ?? $language['exit']);
-            $exit = $this->confirm($language['exit'],'yes');
+            $exit = $this->confirm($language['exit'], 'yes');
         } while ($exit != 'yes');
     }
 }

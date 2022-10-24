@@ -27,8 +27,8 @@
         }
     },
     "scripts": {
-        "lint": "phpcs --standard=PSR1,PSR12,./ruleset.xml --ignore=config/us-zipcode.php app/ routes/ config/ ",
-        "lint-fix": "phpcbf --standard=PSR1,PSR12 --ignore=config/us-zipcode.php  src/ "
+        "lint": "phpcs --standard=PSR1,PSR12,./ruleset.xml  app/ routes/ config/ ",
+        "lint-fix": "phpcbf --standard=PSR1,PSR12   src/ "
     },
     "extra": {
         "laravel": {
