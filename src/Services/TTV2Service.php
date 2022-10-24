@@ -5,6 +5,7 @@ namespace Chowjiawei\Helpers\Services;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TTV2Service
 {
@@ -256,7 +257,33 @@ class TTV2Service
     {
         $status = $this->verify(str_replace("\\/", "/", json_encode($request->post(), JSON_UNESCAPED_UNICODE)), $request->header()['byte-timestamp'][0], $request->header()['byte-nonce-str'][0], $request->header()['byte-signature'][0]);
         if ($status) {
+            return [
+                "err_no" => 0,
+                "err_tips" => "success",
+            ];
+        }
+    }
 
+    //退款回调
+    public function refundReturn(Request $request)
+    {
+        $status = $this->verify(str_replace("\\/", "/", json_encode($request->post(), JSON_UNESCAPED_UNICODE)), $request->header()['byte-timestamp'][0], $request->header()['byte-nonce-str'][0], $request->header()['byte-signature'][0]);
+        if ($status) {
+            return [
+                "err_no" => 0,
+                "err_tips" => "success",
+            ];
+        }
+    }
+
+    public function settleCallback(Request $request)
+    {
+        $status = $this->verify(str_replace("\\/", "/", json_encode($request->post(), JSON_UNESCAPED_UNICODE)), $request->header()['byte-timestamp'][0], $request->header()['byte-nonce-str'][0], $request->header()['byte-signature'][0]);
+        if ($status) {
+            return [
+                "err_no" => 0,
+                "err_tips" => "success",
+            ];
         }
     }
 
