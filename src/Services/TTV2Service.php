@@ -10,12 +10,12 @@ class TTV2Service
     public function __construct()
     {
         $this->config = [
-            'token' => config('services.tt_pay.token'),
-            'salt' => config('services.tt_pay.salt'),
-            'merchant_id' => config('services.tt_pay.merchant_id'),
-            'app_id' => config('services.bytedance_mini.client_id'),
-            'secret' => config('services.bytedance_mini.client_secret'),
-            'notify_url' => config('services.tt_pay.notify_url'),
+            'token' => config('helpers.tiktok.token'),
+            'salt' => config('helpers.tiktok.salt'),
+            'merchant_id' => config('helpers.tiktok.merchant_id'),
+            'app_id' => config('helpers.tiktok.client_id'),
+            'secret' => config('helpers.tiktok.client_secret'),
+            'notify_url' => config('helpers.tiktok.notify_url'),
         ];
     }
     //查询订单
@@ -42,22 +42,18 @@ class TTV2Service
         }
         return [];
     }
-    
+
 
     //发起退款  发起后还需要审核 同意退款
-    public function refund($trackNumber, $price)
+    public function refund($trackNumber, $price, $itemOrderId)
     {
         $config = $this->config;
-        $inOrder = Order::query()->where('track_number', $trackNumber)->first();
-        $orderItem = OrderItem::query()->where('order_id', $inOrder->id)->first();
-        $extendItem = $orderItem->extend_item;
-        $itemOrderId = json_decode($extendItem['msg'], true)['goods'][0]['item_order_id_list'][0];
         $order = [
             'out_order_no' => $trackNumber,
             'out_refund_no' => $trackNumber,
             'order_entry_schema' => [
                 'path' => 'pages/courseDetail/courseDetail',
-                'params' => '{\"id\":\"96f8bbf8-57c6-4348-baf2-caffe18a9277\"}'  //都一个就行
+                'params' => '{\"id\":\"96f8bbf8-57c6-4348-baf2-caffe18a9277\"}'
             ],
             "item_order_detail" => [
                 [
@@ -114,7 +110,6 @@ class TTV2Service
                     'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="2",signature="' . $sign . '"'
                 ]]);
         $data = json_decode($response->getBody()->getContents(), true);
-//        dump($data);
         if ($data['err_no'] == 0) {
             return true;
         }

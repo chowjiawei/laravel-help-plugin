@@ -504,4 +504,14 @@ return [
             "generate" => 'Generate Code',
         ],
     ],
+    'tiktok'=>[
+        'token' => '',
+        'salt' => '',
+        'merchant_id' => '',
+        'app_id' => '',
+        'secret' => '',
+        'notify_url' => '',
+    ],
+
+
 ];
