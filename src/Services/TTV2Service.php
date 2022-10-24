@@ -2,12 +2,9 @@
 
 namespace Chowjiawei\Helpers\Services;
 
-use App\Models\Users\User;
-use App\Services\OrderService;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class TTV2Service
 {
@@ -86,7 +83,6 @@ class TTV2Service
                     'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="2",signature="' . $sign . '"'
                 ]]);
         $data = json_decode($response->getBody()->getContents(), true);
-//        dump($data);
         if ($data['err_no'] == 0) {
             return true;
         }

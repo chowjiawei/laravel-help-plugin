@@ -504,13 +504,13 @@ return [
             "generate" => 'Generate Code',
         ],
     ],
-    'tiktok'=>[
+    'tiktok'=>[  //抖音的支付 单位全部为分
         'token' => '',
         'salt' => '',
         'merchant_id' => '',
         'app_id' => '',
         'secret' => '',
-        'notify_url' => '',
+        'notify_url' => '',  //支付链接  如果再 设置回调链接中设置了支付回调链接 则设置的优先 这个配置不生效
         'private_key_url' => storage_path() . '/pay/tt/private_key.pem',
         'platform_public_key_url' => storage_path() . '/pay/tt/platform_public_key.pem',
         'public_key_url' => storage_path() . '/pay/tt/public_key.pem'
