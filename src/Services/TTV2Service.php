@@ -4,6 +4,7 @@ namespace Chowjiawei\Helpers\Services;
 
 use Carbon\Carbon;
 use GuzzleHttp\Client;
+use Illuminate\Http\Request;
 
 class TTV2Service
 {
@@ -237,9 +238,27 @@ class TTV2Service
     }
 
 
+//支付回调  处理支付的事情
+    public function return(Request $request)
+    {
+        $status = $this->verify(json_encode($request->post()), $request->header()['byte-timestamp'][0], $request->header()['byte-nonce-str'][0], $request->header()['byte-signature'][0]);
+        //搬运原来旧的逻辑
+        if ($status) {
+            return [
+                "err_no" => 0,
+                "err_tips" => "success"
+            ];
+        }
+    }
 
+    //预下单回调
+    public function returnCallback(Request $request)
+    {
+        $status = $this->verify(str_replace("\\/", "/", json_encode($request->post(), JSON_UNESCAPED_UNICODE)), $request->header()['byte-timestamp'][0], $request->header()['byte-nonce-str'][0], $request->header()['byte-signature'][0]);
+        if ($status) {
 
-
+        }
+    }
 
     public function makeSign($method, $url, $body, $timestamp, $nonce_str)
     {
