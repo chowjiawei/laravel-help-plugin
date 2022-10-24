@@ -14,7 +14,7 @@ class ExtendCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'extend { --chinese :  Use Chinese, default English }';
+    protected $signature = 'extend';
 
     /**
      * The console command description.
@@ -34,11 +34,11 @@ class ExtendCommand extends Command
     }
 
 
-    public function languageChange($language = 'english')
+    public function languageChange($language = 'chinese')
     {
-        if ($language == 'english') {
-            return config('helpers.extend.english');
-        }
+//        if ($language == 'english') {
+//            return config('helpers.extend.english');
+//        }
 
         if ($language == 'chinese') {
             return config('helpers.extend.chinese');
