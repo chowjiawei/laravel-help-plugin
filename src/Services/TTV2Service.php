@@ -2,6 +2,8 @@
 
 namespace Chowjiawei\Helpers\Services;
 
+use App\Models\Users\User;
+use App\Services\OrderService;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -187,22 +189,22 @@ class TTV2Service
 
 
     //设置回调
-    public function settingReturn()
+    public function settingReturn(array $settingData)
     {
         $config = $this->config;
-        $order = [
-            'create_order_callback' => config('app.url') . '/api/general/tt-pay-v2/return-callback',
-            'refund_callback' => config('app.url') . '/api/general/tt-pay-v2/refund',
-            'pay_callback' => config('app.url') . '/api/general/tt-pay-v2/return',
-        ];
+//        $order = [
+//            'create_order_callback' => config('app.url') . '/api/general/tt-pay-v2/return-callback',
+//            'refund_callback' => config('app.url') . '/api/general/tt-pay-v2/refund',
+//            'pay_callback' => config('app.url') . '/api/general/tt-pay-v2/return',
+//        ];
         $timestamp = Carbon::now()->timestamp;
         $str = substr(md5($timestamp), 5, 15);
-        $body = json_encode($order);
+        $body = json_encode($settingData);
         $sign = $this->makeSign('POST', '/api/apps/trade/v2/settings', $body, $timestamp, $str);
         $client = new Client();
         $url = 'https://developer.toutiao.com/api/apps/trade/v2/settings';
         $response = $client->post($url, [
-                'json' => $order ,
+                'json' => $settingData ,
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
@@ -257,10 +259,13 @@ class TTV2Service
     {
         $status = $this->verify(str_replace("\\/", "/", json_encode($request->post(), JSON_UNESCAPED_UNICODE)), $request->header()['byte-timestamp'][0], $request->header()['byte-nonce-str'][0], $request->header()['byte-signature'][0]);
         if ($status) {
-            return [
-                "err_no" => 0,
-                "err_tips" => "success",
-            ];
+            $data = $request->post();
+            $product = json_decode($data['msg'], true);
+            $goodsId = $product['goods'][0]['goods_id'];
+            $bytedanceOpenid=$product['union_id'];
+
+
+            //全部数据要存起来 后续退款等操作都需要用 抖音不支持二次查询某些字段
         }
     }
 
