@@ -262,7 +262,7 @@ class TTV2Service
             $data = $request->post();
             $product = json_decode($data['msg'], true);
             $goodsId = $product['goods'][0]['goods_id'];
-            $bytedanceOpenid=$product['union_id'];
+            $bytedanceOpenid = $product['union_id'];
 
 
             //全部数据要存起来 后续退款等操作都需要用 抖音不支持二次查询某些字段
@@ -294,7 +294,7 @@ class TTV2Service
 
     public function makeSign($method, $url, $body, $timestamp, $nonce_str)
     {
-        $config=$this->config;
+        $config = $this->config;
         $text = $method . "\n" . $url . "\n" . $timestamp . "\n" . $nonce_str . "\n" . $body . "\n";
         $priKey = file_get_contents($config['private_key_url']);
         $privateKey = openssl_get_privatekey($priKey, '');
@@ -305,7 +305,7 @@ class TTV2Service
 
     public function verify($http_body, $timestamp, $nonce_str, $sign)
     {
-        $config=$this->config;
+        $config = $this->config;
         $data = $timestamp . "\n" . $nonce_str . "\n" . $http_body . "\n";
         $publicKey = file_get_contents($config['platform_public_key_url']);
         if (!$publicKey) {

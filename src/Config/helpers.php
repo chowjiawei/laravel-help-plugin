@@ -504,7 +504,7 @@ return [
             "generate" => 'Generate Code',
         ],
     ],
-    'tiktok'=>[  //抖音的支付 单位全部为分
+    'tiktok' => [  //抖音的支付 单位全部为分
         'token' => '',
         'salt' => '',
         'merchant_id' => '',
