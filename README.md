@@ -414,14 +414,32 @@ $tiktokService->query("站内订单号，非抖音侧订单号");
 正确时返回数组 其余返回空数组
 ```
 
-- 发起退款
+- 发起退款 (单个订单单个订单项)
 
 ```php
 $tiktokService= new TTV2Service();
-$tiktokService->refund("站内订单号，非抖音侧订单号");
+$tiktokService->refund("站内订单号，非抖音侧订单号", '价格 为分', '$itemOrderId');
 正确时返回true 其余返回false
 ```
 
+- 发起退款 (单个订单多个订单项)
+
+```php
+        $item= [
+            [
+                "item_order_id" => '',
+                "refund_amount" => (int)$price
+            ],
+            [
+                "item_order_id" => '',
+                "refund_amount" => (int)$price
+            ],
+        ];
+
+$tiktokService= new TTV2Service();
+$tiktokService->refundManyItem("站内订单号，非抖音侧订单号",$item);
+正确时返回true 其余返回false
+```
 - 同意退款
 
 ```php

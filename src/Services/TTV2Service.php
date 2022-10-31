@@ -54,7 +54,7 @@ class TTV2Service
     }
 
 
-    //发起退款  发起后还需要审核 同意退款
+    //发起退款(单个订单单个订单项)  发起后还需要审核 同意退款
     public function refund($trackNumber, $price, $itemOrderId)
     {
         $config = $this->config;
@@ -94,6 +94,54 @@ class TTV2Service
         }
         return false;
     }
+
+
+    //发起退款(单个订单多个订单项)  发起后还需要审核 同意退款
+    public function refundManyItem($trackNumber, $item)
+    {
+//        $item= [
+//            [
+//                "item_order_id" => '',
+//                "refund_amount" => (int)$price
+//            ],
+//            [
+//                "item_order_id" => '',
+//                "refund_amount" => (int)$price
+//            ],
+//        ];
+        $config = $this->config;
+        $order = [
+            'out_order_no' => $trackNumber,
+            'out_refund_no' => $trackNumber,
+            'order_entry_schema' => [
+                'path' => 'pages/courseDetail/courseDetail',
+                'params' => '{\"id\":\"96f8bbf8-57c6-4348-baf2-caffe18a9277\"}'
+            ],
+            "item_order_detail" => $item,
+            'notify_url' => $config['refund_notify_url']
+        ];
+
+        $timestamp = Carbon::now()->timestamp;
+        $str = substr(md5($timestamp), 5, 15);
+        $body = json_encode($order);
+
+        $sign = $this->makeSign('POST', '/api/apps/trade/v2/create_refund', $body, $timestamp, $str);
+        $client = new Client();
+        $url = 'https://developer.toutiao.com/api/apps/trade/v2/create_refund';
+        $response = $client->post($url, [
+            'json' => $order ,
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+                'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="' . $config["version"] . '",signature="' . $sign . '"'
+            ]]);
+        $data = json_decode($response->getBody()->getContents(), true);
+        if ($data['err_no'] == 0) {
+            return true;
+        }
+        return false;
+    }
+
 
     //同意退款   钱在这里就会直接退回去
     public function agreeRefund($trackNumber)
