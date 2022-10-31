@@ -20,6 +20,12 @@ class TTV2Service
             'private_key_url' =>  config('helpers.tiktok.private_key_url'),
             'platform_public_key_url' => config('helpers.tiktok.platform_public_key_url'),
             'public_key_url' =>  config('helpers.tiktok.public_key_url'),
+            'version' =>  config('helpers.tiktok.version'),
+            'settle_notify_url' =>  config('helpers.tiktok.settle_notify_url'),//分账回调url
+            'refund_notify_url' =>  config('helpers.tiktok.refund_notify_url'),//退款回调url
+            'agree_refund_notify_url' =>  config('helpers.tiktok.agree_refund_notify_url'),//同意退款回调url
+            'create_order_callback' =>  config('helpers.tiktok.create_order_callback'),//创建订单回调地址
+            'pay_callback' =>  config('helpers.tiktok.pay_callback'),//支付回调地址
         ];
     }
     //查询订单
@@ -38,7 +44,7 @@ class TTV2Service
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
-                    'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="2",signature="' . $sign . '"'
+                    'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="' . $config["version"] . '",signature="' . $sign . '"'
                 ]]);
         $data = json_decode($response->getBody()->getContents(), true);
         if ($data['err_no'] == 0) {
@@ -65,7 +71,7 @@ class TTV2Service
                     "refund_amount" => (int)$price
                 ]
             ],
-            'notify_url' => config('app.url') . '/api/general/tt-pay-v2/refund'
+            'notify_url' => $config['refund_notify_url']
         ];
 
         $timestamp = Carbon::now()->timestamp;
@@ -80,7 +86,7 @@ class TTV2Service
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
-                    'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="2",signature="' . $sign . '"'
+                    'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="' . $config["version"] . '",signature="' . $sign . '"'
                 ]]);
         $data = json_decode($response->getBody()->getContents(), true);
         if ($data['err_no'] == 0) {
@@ -110,7 +116,7 @@ class TTV2Service
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
-                    'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="2",signature="' . $sign . '"'
+                    'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="' . $config["version"] . '",signature="' . $sign . '"'
                 ]]);
         $data = json_decode($response->getBody()->getContents(), true);
         if ($data['err_no'] == 0) {
@@ -132,7 +138,7 @@ class TTV2Service
             'out_settle_no' => $trackNumber,
             'settle_desc' => $desc,
 //            'settle_params'=>"[{\"merchant_uid\":\"71034295218686712630\",\"amount\":".$amount."}]",
-            'notify_url' => config('app.url') . '/api/general/tt-pay-v2/settle-callback'
+            'notify_url' => $config['settle_notify_url']
         ];
 
 
@@ -149,7 +155,7 @@ class TTV2Service
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
-                    'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="2",signature="' . $sign . '"'
+                    'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="' . $config["version"] . '",signature="' . $sign . '"'
                 ]]);
         $data = json_decode($response->getBody()->getContents(), true);
         if ($data['err_no'] == 0) {
@@ -179,24 +185,24 @@ class TTV2Service
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
-                    'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="2",signature="' . $sign . '"'
+                    'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="' . $config["version"] . '",signature="' . $sign . '"'
                 ]]);
         $data = json_decode($response->getBody()->getContents(), true);
         return $data;
     }
 
 
-//        $settingData = [
-//            'create_order_callback' => config('app.url') . '/api/general/tt-pay-v2/return-callback',
-//            'refund_callback' => config('app.url') . '/api/general/tt-pay-v2/refund',
-//            'pay_callback' => config('app.url') . '/api/general/tt-pay-v2/return',
-//        ];
-
     //设置回调
-    public function settingReturn(array $settingData)
+    public function settingReturn(array $settingData = [])
     {
         $config = $this->config;
-
+        if (empty($settingData)) {
+            $settingData = [
+                'create_order_callback' => $config['create_order_callback'],
+                'refund_callback' => $config['refund_notify_url'],
+                'pay_callback' => $config['pay_callback'],
+            ];
+        }
         $timestamp = Carbon::now()->timestamp;
         $str = substr(md5($timestamp), 5, 15);
         $body = json_encode($settingData);
@@ -208,7 +214,7 @@ class TTV2Service
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
-                    'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="2",signature="' . $sign . '"'
+                    'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="' . $config["version"] . '",signature="' . $sign . '"'
                 ]]);
         $data = json_decode($response->getBody()->getContents(), true);
         return $data;
@@ -231,7 +237,7 @@ class TTV2Service
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
-                    'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="2",signature="' . $sign . '"'
+                    'Byte-Authorization' => 'SHA256-RSA2048 appid="' . $config['app_id'] . '",nonce_str=' . $str . ',timestamp="' . $timestamp . '",key_version="' . $config["version"] . '",signature="' . $sign . '"'
                 ]]);
         $data = json_decode($response->getBody()->getContents(), true);
         if ($data['err_no'] == 0) {
@@ -248,10 +254,13 @@ class TTV2Service
         //搬运原来旧的逻辑
         if ($status) {
             return [
-                "err_no" => 0,
-                "err_tips" => "success"
+                'data' => $request->post(),
+                'status' => true
             ];
         }
+        return [
+            'status' => false
+        ];
     }
 
     //预下单回调
@@ -260,13 +269,12 @@ class TTV2Service
         $status = $this->verify(str_replace("\\/", "/", json_encode($request->post(), JSON_UNESCAPED_UNICODE)), $request->header()['byte-timestamp'][0], $request->header()['byte-nonce-str'][0], $request->header()['byte-signature'][0]);
         if ($status) {
             $data = $request->post();
-            $product = json_decode($data['msg'], true);
-            $goodsId = $product['goods'][0]['goods_id'];
-            $bytedanceOpenid = $product['union_id'];
-
-
+//            $product = json_decode($data['msg'], true);
+//            $goodsId = $product['goods'][0]['goods_id'];
+//            $bytedanceOpenid = $product['union_id'];
             //全部数据要存起来 后续退款等操作都需要用 抖音不支持二次查询某些字段
         }
+        return $data ?? [];
     }
 
     //退款回调
@@ -274,22 +282,18 @@ class TTV2Service
     {
         $status = $this->verify(str_replace("\\/", "/", json_encode($request->post(), JSON_UNESCAPED_UNICODE)), $request->header()['byte-timestamp'][0], $request->header()['byte-nonce-str'][0], $request->header()['byte-signature'][0]);
         if ($status) {
-            return [
-                "err_no" => 0,
-                "err_tips" => "success",
-            ];
+            return true;
         }
+        return false;
     }
 
     public function settleCallback(Request $request)
     {
         $status = $this->verify(str_replace("\\/", "/", json_encode($request->post(), JSON_UNESCAPED_UNICODE)), $request->header()['byte-timestamp'][0], $request->header()['byte-nonce-str'][0], $request->header()['byte-signature'][0]);
         if ($status) {
-            return [
-                "err_no" => 0,
-                "err_tips" => "success",
-            ];
+            return true;
         }
+        return false;
     }
 
     public function makeSign($method, $url, $body, $timestamp, $nonce_str)
