@@ -475,17 +475,11 @@ $tiktokService->return($request);  //控制器内 直接将接受的Request $req
 
 如果业务处理失败 需要手动返回抖音成功
 ```php
-return [
-         "err_no" => 0,
-         "err_tips" => "success"
-];
+$tiktokService->returnOK();  
 ```
 如果业务处理失败 需要手动返回抖音失败
 ```php
-return [
-         "err_no" => 400,
-         "err_tips" => "失败原因"
-];
+$tiktokService->returnError($result='失败原因，可省略'); 
 ```
 
 
@@ -498,17 +492,11 @@ $tiktokService->return($request);  //控制器内 直接将接受的Request $req
 
 如果业务处理失败 需要手动返回抖音成功
 ```php
-return [
-         "err_no" => 0,
-         "err_tips" => "success"
-];
+$tiktokService->returnOK();  
 ```
 如果业务处理失败 需要手动返回抖音失败
 ```php
-return [
-         "err_no" => 400,
-         "err_tips" => "失败原因"
-];
+$tiktokService->returnError($result='失败原因，可省略'); 
 ```
 ### 建议将数组内数据  存起来 后续退款等操作都需要用 抖音不支持二次查询某些字段
 如果需要退款  必须存储 item_order_id_list  获取如下:
@@ -526,17 +514,11 @@ $tiktokService->refundReturn($request);
 
 如果业务处理失败 需要手动返回抖音成功
 ```php
-return [
-         "err_no" => 0,
-         "err_tips" => "success"
-];
+$tiktokService->returnOK();  
 ```
 如果业务处理失败 需要手动返回抖音失败
 ```php
-return [
-         "err_no" => 400,
-         "err_tips" => "失败原因"
-];
+$tiktokService->returnError($result='失败原因，可省略'); 
 ```
 
 - 分账回调
@@ -548,15 +530,9 @@ $tiktokService->settleCallback($request);
 
 如果业务处理失败 需要手动返回抖音成功
 ```php
-return [
-         "err_no" => 0,
-         "err_tips" => "success"
-];
+$tiktokService->returnOK();  
 ```
 如果业务处理失败 需要手动返回抖音失败
 ```php
-return [
-         "err_no" => 400,
-         "err_tips" => "失败原因"
-];
+$tiktokService->returnError($result='失败原因，可省略'); 
 ```

@@ -320,4 +320,22 @@ class TTV2Service
         openssl_free_key($res);
         return $result;  //bool
     }
+
+
+
+    public function returnOK()
+    {
+        return [
+            "err_no" => 0,
+            "err_tips" => "success"
+        ];
+    }
+
+    public function returnError($result='')
+    {
+        return [
+            "err_no" => 400,
+            "err_tips" => $result??"business fail"
+        ];
+    }
 }
